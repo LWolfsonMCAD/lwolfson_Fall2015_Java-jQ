@@ -1,0 +1,73 @@
+/************************************
+Desktop version of coupon
+************************************/
+html {
+	background: #ccc;
+}
+
+
+body {
+	width: 648px;
+	margin: 100px auto;
+}
+
+header {
+	padding: 10px 0px;
+	text-align: center;
+	font-family: "Times New Roman", serif;
+	color: #fff;
+	background-color: #c93042;
+
+		aside.slogan {
+			font-size: 2.5em;
+		}
+
+		h1#current-deal {
+			margin-top: -20px;
+			margin-bottom: 10px;
+			font-size: 3.5em;
+			letter-spacing: 1px;
+		}
+}
+
+div.coupon-body {
+	position: relative;
+	width: 100%;
+	height: 265px;
+	margin-top: -20px;
+	background: url('../img/mail_coupon_bg.jpg');
+
+	div.coupon-info {
+		position: absolute;
+		left: 373px;
+		top: 32px;
+		width: 240px;
+		height: 224px;
+		background-color: #f6485f;
+		font-family: Helvetica, sans-serif;
+		color: #fff;
+
+			h2 {
+				margin-bottom: 5px;
+				padding-left: 9px;
+				font-size: 1.3em;
+				font-weight: 400;
+				letter-spacing: 1px;
+				line-height: 1.1em;
+			}
+
+			p {
+				margin: 0px;
+				margin-bottom: 8px;
+				padding: 0px 9px;
+				font-size: .9em;
+				font-weight: 200;
+			}
+
+			button#spread-the-word {
+				margin-left: 22px;
+				padding: 0px;
+				border: none;
+			}
+	}
+}
