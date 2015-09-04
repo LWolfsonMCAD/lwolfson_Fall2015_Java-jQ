@@ -1,0 +1,133 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Week 2</title>
+
+        <link rel="stylesheet" href="css/main.css">
+        <style type="text/css">
+            ol li, ul li{
+                font-size:18px;
+            }
+            #ourDiv{
+                height:100px;
+                width:100px;
+                background-color:red;
+            }
+
+            #myTestDiv {
+                width: 200px;
+                height: 200px;
+                margin-top: 100px;
+                background-color: blue;
+            }
+
+            #myOtherTestDiv {
+                width: 200px;
+                height: 200px;
+                margin-top: 100px;
+                background-color: green;
+            }
+        </style>
+
+    </head>
+    <body>
+        <header>
+            <h1>Mouse Events.</h1>
+        </header>
+        <main>  
+            <section>
+            
+                <a href="#awesomeHREF" class="awesomeClass" id="ourLink">
+                    What's up.
+                </a>
+                <br/>
+                <br/>
+                <br/>
+                <div id="ourDiv"></div>
+
+                <a href="http://www.google.com" id="myLink" target="_blank">My link to nowhere</a>
+
+                <p id="longerParagraph">So is this one...though they are currently just a single sentence, it's the paragraph element.</p>
+
+                <div id="myTestDiv">
+                    <p>This is just a random paragraph</p>
+
+                </div>
+
+                <div id="myOtherTestDiv">
+
+                </div>
+
+
+                <img src="http://placehold.it/350x150" id="myImage">
+
+            </section>
+        </main>
+        <footer>
+            
+        </footer>
+        <script type="text/javascript">
+            var myTestDiv = document.getElementById('myTestDiv');
+            var ourFunction = function(){
+                alert('What are you clicking me for?');
+            };
+            myTestDiv.addEventListener('click',ourFunction);
+
+            var ourDiv = document.getElementById('ourDiv');
+            var ourFunction = function(){
+                 alert('What are you entering me for?');
+             };
+            ourDiv.addEventListener('mouseenter', ourFunction);
+
+            var myTestDiv = document.getElementById('myTestDiv');
+            var myFunction = function() {
+                alert('Are you sure you want to do that?');
+            };
+            myTestDiv.addEventListener('contextmenu', myFunction);
+
+            var myImage = document.getElementById('myImage');
+            var myFunction = function() {
+                alert('Are you sure you want to do that?');
+            };
+            myImage.addEventListener('dblclick', myFunction);
+
+            
+
+            var myLink = document.getElementById('myLink');
+            var myFunction = function() {
+                alert('Yay for a click!');
+            };
+            myLink.addEventListener('mouseup', myFunction);
+
+
+            var myOtherTestDiv = document.getElementById('myOtherTestDiv');
+            var myFunction = function() {
+                alert('Did you actually click something?');
+            };
+            myOtherTestDiv.addEventListener('mousedown', myFunction);
+
+
+
+            var myLink = document.getElementById('myLink');
+            var myOtherFunction = function() {
+                alert('Hovering makes me nervous.');
+            };
+            myLink.addEventListener('mousemove', myOtherFunction);
+
+            var myTestDiv = document.getElementById('myTestDiv');
+            var myFunction = function() {
+                alert('Did you miss something?');
+            };
+            myTestDiv.addEventListener('mouseleave', myFunction);
+
+            var longerParagraph = document.getElementById('longerParagraph');
+            var myFunction = function() {
+                alert('Did you forget something?');
+            };
+            longerParagraph.addEventListener('mouseout', myFunction);
+
+        </script>
+    </body>
+</html>
