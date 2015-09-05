@@ -1,4 +1,44 @@
 /************************************
 Desktop version of site
 ************************************/
+body {
+	width: 90%;
+	max-width: 960px;
+	margin: 50px auto;
+
+		section {
+			padding: 10px;
+
+				div.flashcard {
+					position: relative;
+					float: left;
+					width: 300px;
+					height: 250px;
+					margin: 4px;
+
+					border: 2px solid green;
+
+						img.stateImage {
+							padding-left: 30%;
+							padding-top: 30px;
+						}
+
+						h2.stateName {
+							position: absolute;
+							bottom: -16px;
+							left: 15px;
+						}
+
+						p.capitalName {
+							display: none;
+						}
+				}
+
+				div#alaska.flashcard img.stateImage {
+							padding-left: 16%;
+						}
+		}
+}
+
+
 
