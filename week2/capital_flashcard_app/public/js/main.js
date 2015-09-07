@@ -1,39 +1,39 @@
 var stateFlashcard = document.getElementById('alabama');
 var showCapital = function() {
-    console.log('The capital of Alabama is ' + document.getElementById('alabamaCapital').innerHTML + ".");
+    alert('The capital of Alabama is ' + document.getElementById('alabamaCapital').textContent + ".");
 };
 stateFlashcard.addEventListener('mouseover', showCapital);
 
 var stateFlashcard = document.getElementById('alaska');
 var showCapital = function() {
-    console.log('The capital of Alaska is ' + document.getElementById('alaskaCaptial').innerHTML + ".");
+    alert('The capital of Alaska is ' + document.getElementById('alaskaCaptial').textContent + ".");
 };
 stateFlashcard.addEventListener('mouseover', showCapital);
 
 
 var stateFlashcard = document.getElementById('arizona');
 var showCapital = function() {
-    console.log('The capital of Arizona is ' + document.getElementById('arizonaCapital').innerHTML + ".");
+    alert('The capital of Arizona is ' + document.getElementById('arizonaCapital').textContent + ".");
 };
 stateFlashcard.addEventListener('mouseover', showCapital); 
 
 
 var stateFlashcard = document.getElementById('arkansas');
 var showCapital = function() {
-    console.log('The capital of Arkansas is ' + document.getElementById('arkansasCapital').innerHTML + ".");
+    alert('The capital of Arkansas is ' + document.getElementById('arkansasCapital').textContent + ".");
 };
 stateFlashcard.addEventListener('mouseover', showCapital);
 
 
 var stateFlashcard = document.getElementById('california');
 var showCapital = function() {
-    console.log('The capital of California is ' + document.getElementById('californiaCapital').innerHTML + ".");
+    alert('The capital of California is ' + document.getElementById('californiaCapital').textContent + ".");
 };
 stateFlashcard.addEventListener('mouseover', showCapital);
 
 
 var stateFlashcard = document.getElementById('colorado');
 var showCapital = function() {
-    console.log('The capital of Colorado is ' + document.getElementById('coloradoCapital').innerHTML + ".");
+    alert('The capital of Colorado is ' + document.getElementById('coloradoCapital').textContent + ".");
 };
 stateFlashcard.addEventListener('mouseover', showCapital);

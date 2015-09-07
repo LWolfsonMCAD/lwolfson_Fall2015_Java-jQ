@@ -2,11 +2,24 @@
 Desktop version of site
 ************************************/
 body {
-	width: 90%;
 	max-width: 960px;
 	margin: 50px auto;
+	font-family: Helvetica, sans-serif;
+
+		header {
+			h1 {
+				margin-bottom: 5px;
+				text-align: center;
+			}
+
+			p {
+				margin-top: 0;
+				text-align: center;
+			}
+		}
 
 		section {
+			width: 100%;
 			padding: 10px;
 
 				div.flashcard {
@@ -39,6 +52,5 @@ body {
 						}
 		}
 }
-
 
 

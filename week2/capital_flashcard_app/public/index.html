@@ -18,7 +18,11 @@
         <!-- [if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif] -->
+        <header>
+            <h1>Do You Know Your State Capitals?</h1>
 
+            <p>Move your mouse over each flashcard to see the name of the state's capital.</p>
+        </header>
         <section>
             <div id="alabama" class="flashcard">
                 <img src="img/alabama.png" alt="Image of Alabama" class="stateImage">
@@ -71,7 +75,11 @@
 
 
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <!--[if !IE]><!-->
+        <script src="js/main.js"></script><!--<![endif]-->
+        <!--[if IE]>
+        <script type="text/javascript" src="js/ie8.js"></script>
+        <![endif]-->
 
     </body>
 </html>
