@@ -12,10 +12,15 @@ var greatestSpeech = [
 	new Speech("Demosthenes", 342, true)
 ];
 
+// var greatestSpeech = [
+// 	new Speech("Winston Churchill", new Date("June 18, 1940"), false),
+// 	new Speech("Ghandi", new Date("August 8, 1942"), false),
+// 	new Speech("Demosthenes", new Date("342"), true)
+// ];
+
+
 //Calculate the number of years between Ghandi's speech and Churchill's.
-var ghandiYear = 1942;
-var churchillYear = 1940;
-var yearsBetweenSpeeches = ghandiYear - churchillYear;
+var yearsBetweenSpeeches = greatestSpeech[1].yearDelivered - greatestSpeech[2].yearDelivered;
 
 console.log("Ghandi's speech and Churchill's speech are " + yearsBetweenSpeeches + " years apart.");
 
