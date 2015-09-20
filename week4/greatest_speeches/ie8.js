@@ -18,9 +18,7 @@ var greatestSpeech = [
 ];
 
 //Calculate the number of years between Ghandi's speech and Churchill's.
-var ghandiYear = 1942;
-var churchillYear = 1940;
-var yearsBetweenSpeeches = ghandiYear - churchillYear;
+var yearsBetweenSpeeches = greatestSpeech[1].yearDelivered - greatestSpeech[0].yearDelivered;
 
 console.log("Ghandi's speech and Churchill's speech are " + yearsBetweenSpeeches + " years apart.");
 
