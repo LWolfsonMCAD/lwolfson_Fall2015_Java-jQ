@@ -19,7 +19,7 @@ var churchillSpeech = {
     },
     speechesArray = [churchillSpeech, ghandiSpeech, demosthenesSpeech];
 
-// Get user's name in order to personalize the experience.
+// Get user's name in order to personalize the experience. If they do not give one, or hit "cancel" then set user's name to "User.""
 var User = window.prompt("What is your name?");
 
 if(User !== "" && User !== null){
@@ -27,6 +27,7 @@ if(User !== "" && User !== null){
 }
 else {
   console.log("Okay, I'll just call you User");
+  var User = "User";
 }
 
 
@@ -34,23 +35,28 @@ document.getElementById('BtnDonate').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Donate" button. Check to see who the user's favorite author is, then display how old the orator was when the speech was delivered.
   var favoriteAuthor = prompt(User + " who is your favorite author?");
 
-  switch(favoriteAuthor.toLowerCase()) {
-    case ("churchill") :
-    console.log(speechesArray[0].author + " was " + speechesArray[0].authorAge + " during this speech.");
-    break;
-
-    case ("ghandi") :
-    console.log(speechesArray[1].author + " was " + speechesArray[1].authorAge + " during this speech.");
-    break;
-
-    case ("demosthenes") :
-    console.log(speechesArray[2].author + " was " + speechesArray[2].authorAge + " during this speech.");
-    break;
-    default:
-    console.log("Please check the spelling of the name you entered and try again.");
-    break;
+  if(favoriteAuthor === null) {
+    console.log("Please click the 'Donate' button again and enter a name.");
   }
+  else {
+    switch(favoriteAuthor.toLowerCase()) {
+      case ("churchill") :
+        console.log(speechesArray[0].author + " was " + speechesArray[0].authorAge + " during this speech.");
+        break;
 
+      case ("ghandi") :
+        console.log(speechesArray[1].author + " was " + speechesArray[1].authorAge + " during this speech.");
+        break;
+
+      case ("demosthenes") :
+        console.log(speechesArray[2].author + " was " + speechesArray[2].authorAge + " during this speech.");
+        break;
+
+      default:
+        console.log("Please check the spelling of the name you entered and try again.");
+        break;
+    }
+  }
 });
 
 document.getElementById('BtnChurchill').addEventListener('click', function(){
