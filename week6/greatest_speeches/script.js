@@ -18,7 +18,6 @@ var churchillSpeech = {
       'authorAge': '42'
     },
     speechesArray = [churchillSpeech, ghandiSpeech, demosthenesSpeech],
-    // userNamePrompt,
     favoriteSpeechPrompt;
 
 
@@ -119,13 +118,3 @@ document.getElementById('BtnDemosthenes').addEventListener('click', function(){
 
 });
 
-
-
-// userNamePrompt = window.prompt('Hello, what is your name?');
-
-// if(typeof userNamePrompt === 'string' && userNamePrompt !== ''){
-//   console.log('Hi ' + userNamePrompt + '!');
-// }else{
-//   console.log('Ok, I\'ll just call you User.');
-//   userNamePrompt = 'User';
-// }
