@@ -49,32 +49,12 @@ document.getElementById('BtnDonate').addEventListener('click', function(){
   favoriteSpeechPrompt = window.prompt('Which speech author is your favorite?').toLowerCase();
 
   for (var i = 0; i < speechesArray.length; i++) {
-    if(favoriteSpeechPrompt === speechesArray[i].author) { 
-      console.log(speechesArray[i].author + " was " + speechesArray[i].authorAge + " during this speech.");
-    }
-    else {
-      console.log("oops");
+    if(favoriteSpeechPrompt === speechesArray[i].author.toLowerCase()) { 
+      console.log(speechesArray[i].author + " was " + speechesArray[i].authorAge+ " during this speech.");
+      break;
     }
   } 
-    // if(speechesArray[i].author === favoriteSpeechPrompt) { 
-    //   console.log(speechesArray[i].author + " was " + speechesArray[i].authorAge + " during this speech.");
-    // }
-  
 
-  // switch(favoriteSpeechPrompt){
-  //   case 'Churchill':
-  //     console.log(speechesArray[0].author + ' was ' + speechesArray[0].authorAge + ' during this speech.');
-  //     break;
-  //   case 'Ghandi':
-  //     console.log(speechesArray[1].author + ' was ' + speechesArray[1].authorAge + ' during this speech.');
-  //     break;
-  //   case 'Demosthenes':
-  //     console.log(speechesArray[2].author + ' was ' + speechesArray[2].authorAge + ' during this speech.');
-  //     break;
-  //   default:
-  //     console.log('Did you spell that name correctly?');
-  //     break;
-  // }
 });
 
 document.getElementById('BtnChurchill').addEventListener('click', function(){
