@@ -31,10 +31,18 @@ document.getElementById('BtnDonate').addEventListener('click', function(){
 
 //Need to flush out the logic, hopefully move the sideNavHeadingText variable outside of this section.
   if(amountToBeDonated < 100) {
-      var sideNavHeadingText = document.createTextNode("Thank you for your donation of $" + amountToBeDonated);
+      var sideNavHeadingText = document.createTextNode("Thank you for your donation of $" + amountToBeDonated + ".");
   }
   else if (amountToBeDonated >= 100) {
+       var sideNavHeadingText = document.createTextNode("Thank you for your very generous donation!");
 
+      sideNavHeading.setAttribute("style", "color:red");
+
+      // document.getElementsByTagName("article").className = "generous-donation";
+      var articlesToChange = document.getElementsByTagName("article");
+      for(i=0; i < articlesToChange.length; i++){
+        document.getElementsByTagName("article").className += "generous-donation";
+      }   
   }
   else {
     document.getElementById("ConsoleDisplay").innerHTML = "Please enter a valid number.";
