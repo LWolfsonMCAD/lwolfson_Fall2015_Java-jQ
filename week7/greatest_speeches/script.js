@@ -45,14 +45,11 @@ for(var i = 0; i < speechesArray.length; i++){
 //This code executes when the user clicks the "Donate" button.
 document.getElementById('BtnDonate').addEventListener('click', function(){
 
-//Clear the sideNavHeading and ConsoleDisplay in case there was anything there.
-  while (sideNavHeading.hasChildNodes()) {
-      sideNavHeading.removeChild(sideNavHeading.firstChild);
-  }
-
-  document.getElementById("ConsoleDisplay").innerHTML = "";
+//Call the custom reset function (found at the end of this document).
+  resetDonationSideNav();
 
 
+//Find out from the user how much money they'd like to donate.
   amountToBeDonated = window.prompt("How much would you like to donate?");
 
 //Display different messages in the sideNavHeading depending on how much the user chooses to donate.
@@ -145,3 +142,22 @@ document.getElementById('BtnDemosthenes').addEventListener('click', function(){
     document.getElementById("ConsoleDisplay").innerHTML += 'This is the most recent speech on the page. <br>';
   }
 });
+
+
+
+//Function that affects the SideNav area after the "Donate" button is clicked. Clears the sideNavHeading and ConsoleDisplay in case there was anything there. Resets colors back to their default.
+function resetDonationSideNav() {   
+  while (sideNavHeading.hasChildNodes()) {
+      sideNavHeading.removeChild(sideNavHeading.firstChild);
+  }
+  
+  sideNavHeading.setAttribute("style", "color:white");
+  
+  document.getElementById("ConsoleDisplay").innerHTML = "";
+
+  for(i=0; i < speechArticles.length; i++){
+    if (document.getElementsByTagName("article")[i].classList.contains("generous-donation")){
+          document.getElementsByTagName("article")[i].classList.remove("generous-donation");
+    }
+  } 
+}
