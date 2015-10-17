@@ -20,12 +20,16 @@ var
     },
     speechesArray = [churchillSpeech, ghandiSpeech, demosthenesSpeech],
     donatePrompt,
-    authorButtons = document.getElementsByClassName("author-button");
+    amountToBeDonated,
+    speechArticles = document.getElementsByTagName("article")
   ;
+
+//Elements created with JS
+  var sideNavHeading = document.createElement("h3");
+  document.getElementById("SideNav").appendChild(sideNavHeading);
 
 
 //Custom functions.
-
 function getAuthorAndYearString (currentSpeech) {
   var speechAuthor = currentSpeech.author,
       speechYear = currentSpeech.year; 
@@ -35,16 +39,10 @@ function getAuthorAndYearString (currentSpeech) {
 
 function displayBCEString (yearIsBCE) {
   if(yearIsBCE === true){
-
-    return ("This speech took place before the common era. <br>");
-
+      return ("This speech took place before the common era. <br>");
   }else{
-
-    return ("This speech took place during the common era. <br>"); 
-
+      return ("This speech took place during the common era. <br>"); 
   }
-
-
 }
 
 function getOldestOrYoungestString (speechYear) {
@@ -53,166 +51,117 @@ function getOldestOrYoungestString (speechYear) {
 
   for(var i = 0; i < speechesArray.length; i++){
     if(speechesArray[i].year < oldestSpeech){
-      oldestSpeech = speechesArray[i].year;
+        oldestSpeech = speechesArray[i].year;
     }
     if(speechesArray[i].year > newestSpeech){
-      newestSpeech = speechesArray[i].year;
+        newestSpeech = speechesArray[i].year;
     }
   }
 
   if(speechYear === oldestSpeech){
-    return ("This is the oldest speech on the page.<br>");
+      return ("This is the oldest speech on the page.<br>");
   }
-  if(speechYear === newestSpeech){
-    return ("This is the most recent speech on the page.<br>");
+  else if(speechYear === newestSpeech){
+      return ("This is the most recent speech on the page.<br>");
+  }
+  else {
+      return ("</br>");
   }
 }
 
-document.getElementById('BtnChurchill').addEventListener('click', function(){
-  //Code in here executes when the user clicks the "Churchill" button.
 
+function donationDisplay () {
 
-  document.getElementById('ConsoleDisplay').innerHTML = getAuthorAndYearString(speechesArray[0]);
+  clearDonationDisplay();
 
-  document.getElementById('ConsoleDisplay').innerHTML += displayBCEString(speechesArray[0].yearIsBCE);
+  amountToBeDonated = window.prompt("How much would you like to donate?");
 
-  document.getElementById('ConsoleDisplay').innerHTML += getOldestOrYoungestString(speechesArray[0].year);
+//Display different messages in the sideNavHeading depending on how much the user chooses to donate.
+  if(amountToBeDonated < 100 && amountToBeDonated !== null && amountToBeDonated > 0) {
+      var sideNavHeadingText = document.createTextNode("Thank you for your donation of $" + amountToBeDonated + ".");
 
-});
+      sideNavHeading.appendChild(sideNavHeadingText);
 
-// document.getElementById('BtnDonate').addEventListener('click', function(){
-//   //Code in here executes when the user clicks the "Donate" button.
-//   var donationDisplay = document.createElement('h3'),
-//       donationText,
-//       articleElements;
+      for(i=0; i < speechArticles.length; i++){
+        if (document.getElementsByTagName("article")[i].classList.contains("generous-donation")){
+              document.getElementsByTagName("article")[i].classList.remove("generous-donation");
+        }
+      }
 
-//   donatePrompt = window.prompt('How much would you like to donate?');
+      sideNavHeading.setAttribute("style", "color:white");
+  }
+  else if (amountToBeDonated >= 100 && amountToBeDonated !== null) {
+      var sideNavHeadingText = document.createTextNode("Thank you for your very generous donation!");
 
-//   if(donatePrompt >= 100){
-//     donationText = document.createTextNode('Thank you for your very generous donation!');
-//     donationDisplay.setAttribute('style', 'color: #DB152C;');
+      sideNavHeading.appendChild(sideNavHeadingText);
 
-//     articleElements = document.getElementsByTagName('article');
-//     for(var i = 0; i < articleElements.length; i++){
-//       articleElements[i].className = 'generous-donation';
-//     }
-//   }else{
-//     donationText = document.createTextNode('Thank you for your donation of $' + donatePrompt);
-//   }
+      sideNavHeading.setAttribute("style", "color:red");
 
-//   donationDisplay.appendChild(donationText);
-//   document.getElementById('SideNav').appendChild(donationDisplay);
-// });
+      for(i=0; i < speechArticles.length; i++){
+        document.getElementsByTagName("article")[i].className += "generous-donation";
+      }   
+  }
+  else {
+    document.getElementById("ConsoleDisplay").innerHTML = "Please enter a valid amount.";
+  }
+}
 
-// document.getElementById('BtnChurchill').addEventListener('click', function(){
-//   //Code in here executes when the user clicks the "Churchill" button.
-//   document.getElementById('ConsoleDisplay').innerHTML = 'This speech was written by ' + speechesArray[0].author + ' in ' + speechesArray[0].year + '<br>';
-
-//   if(speechesArray[0].yearIsBCE === true){
-//     document.getElementById('ConsoleDisplay').innerHTML += 'This speech took place before the common era.<br>';
-//   }else{
-//     document.getElementById('ConsoleDisplay').innerHTML += 'This speech took place during the common era.<br>';
-//   }
-
-//   var oldest = speechesArray[0].year,
-//       newest = speechesArray[0].year;
-
-//   for(var i = 0; i < speechesArray.length; i++){
-//     if(speechesArray[i].year < oldest){
-//       oldest = speechesArray[i].year;
-//     }
-//     if(speechesArray[i].year > newest){
-//       newest = speechesArray[i].year;
-//     }
-//   }
-
-//   if(speechesArray[0].year === oldest){
-//     document.getElementById('ConsoleDisplay').innerHTML += 'This is the oldest speech on the page.<br>';
-//   }
-//   if(speechesArray[0].year === newest){
-//     document.getElementById('ConsoleDisplay').innerHTML += 'This is the most recent speech on the page.<br>';
-//   }
-// });
-
-// document.getElementById('BtnGhandi').addEventListener('click', function(){
-//   //Code in here executes when the user clicks the "Ghandi" button.
-//   document.getElementById('ConsoleDisplay').innerHTML = 'This speech was written by ' + speechesArray[1].author + ' in ' + speechesArray[1].year + '<br>';
-
-//   if(speechesArray[1].yearIsBCE === true){
-//     document.getElementById('ConsoleDisplay').innerHTML += 'This speech took place before the common era.<br>';
-//   }else{
-//     document.getElementById('ConsoleDisplay').innerHTML += 'This speech took place during the common era.<br>';
-//   }
-
-//   var oldest = speechesArray[0].year,
-//       newest = speechesArray[0].year;
-
-//   for(var i = 0; i < speechesArray.length; i++){
-//     if(speechesArray[i].year < oldest){
-//       oldest = speechesArray[i].year;
-//     }
-//     if(speechesArray[i].year > newest){
-//       newest = speechesArray[i].year;
-//     }
-//   }
-
-//   if(speechesArray[1].year === oldest){
-//     document.getElementById('ConsoleDisplay').innerHTML += 'This is the oldest speech on the page.<br>';
-//   }
-//   if(speechesArray[1].year === newest){
-//     document.getElementById('ConsoleDisplay').innerHTML += 'This is the most recent speech on the page.<br>';
-//   }
-// });
-
-// document.getElementById('BtnDemosthenes').addEventListener('click', function(){
-//   //Code in here executes when the user clicks the "Demosthenes" button.
-//   document.getElementById('ConsoleDisplay').innerHTML = 'This speech was written by ' + speechesArray[2].author + ' in ' + speechesArray[2].year + '<br>';
-
-
-//   if(speechesArray[2].yearIsBCE === true){
-//     document.getElementById('ConsoleDisplay').innerHTML += 'This speech took place before the common era.<br>';
-//   }else{
-//     document.getElementById('ConsoleDisplay').innerHTML += 'This speech took place during the common era.<br>';
-//   }
-
-//   var oldest = speechesArray[0].year,
-//       newest = speechesArray[0].year;
-
-//   for(var i = 0; i < speechesArray.length; i++){
-//     if(speechesArray[i].year < oldest){
-//       oldest = speechesArray[i].year;
-//     }
-//     if(speechesArray[i].year > newest){
-//       newest = speechesArray[i].year;
-//     }
-//   }
-
-//   if(speechesArray[2].year === oldest){
-//     document.getElementById('ConsoleDisplay').innerHTML += 'This is the oldest speech on the page.<br>';
-//   }
-//   if(speechesArray[2].year === newest){
-//     document.getElementById('ConsoleDisplay').innerHTML += 'This is the most recent speech on the page.<br>';
-//   }
-// });
-
+function clearDonationDisplay () {
+    if (typeof sideNavHeading !== 'undefined') { 
+        while (sideNavHeading.hasChildNodes()) {
+            sideNavHeading.removeChild(sideNavHeading.firstChild);
+        }
+    }
+}
 
 
 //Add event listeners to all of the author nav buttons.
-for (var i = 0; i < authorButtons.length; i++) {
-  authorButtons[i].addEventListener('click', function() {
-    
-    }
+var sideNav = document.querySelector("#SideNav");
+sideNav.addEventListener("click", getButtonId, false);
+ 
+function getButtonId(btn) {
+    if (btn.target !== btn.currentTarget) {
+        var clickedItem = btn.target.id;
 
-  );
+        switch (clickedItem) {
+          case "BtnChurchill":
+              i = 0;
+              break;
+
+          case "BtnGhandi":
+              i = 1;
+              break;
+
+          case "BtnDemosthenes":
+              i = 2;
+              break;
+
+          case "BtnDonate" : 
+              donationDisplay(); 
+              break;
+
+          default:
+              break;
+        }
+
+      if (clickedItem === "BtnDonate") {
+        var consoleDisplay = document.getElementById('ConsoleDisplay');
+        while (consoleDisplay.hasChildNodes()){
+            consoleDisplay.removeChild(consoleDisplay.firstChild);
+        }
+      }
+      else {
+        document.getElementById('ConsoleDisplay').innerHTML = getAuthorAndYearString(speechesArray[i]);
+
+        document.getElementById('ConsoleDisplay').innerHTML += displayBCEString(speechesArray[i].yearIsBCE);
+
+        document.getElementById('ConsoleDisplay').innerHTML += getOldestOrYoungestString(speechesArray[i].year);
+
+        clearDonationDisplay();
+      }
+
+
+    }
+    btn.stopPropagation();
 }
 
-
-
-// //Whenever one of the "Scroll to Top" buttons are clicked, call the function to scroll up the window.
-// for (var i = 0; i < scrollToTopButtons.length; i++) {
-//   scrollToTopButtons[i].addEventListener('click', function() {
-    
-//     scrollToTopOfPage();
-
-//   });
-// }
