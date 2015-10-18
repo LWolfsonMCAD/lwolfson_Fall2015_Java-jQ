@@ -65,7 +65,7 @@ function getOldestOrYoungestString (speechYear) {
       return ("This is the most recent speech on the page.<br>");
   }
   else {
-      return ("</br>");
+      return ("This is not the oldest or most recent speech on the page.<br>");
   }
 }
 
