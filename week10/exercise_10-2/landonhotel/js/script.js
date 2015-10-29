@@ -9,47 +9,29 @@ $( document ).ready(function() {
 
 
 //The following script creates a dynamic table of contents on the Specials page.
-	//var citiesWithSpecialsList = $("div.content h2");
 
-	var citiesList = $( "div.content h1" ).after( "<ul id='citiesWithSpecials'></ul>" );
+	var 
+		citiesList = $( "div.content h1" ).after( "<ul id='citiesWithSpecials'></ul>" ),
 
-	//var citiesWithSpecials = $("div.content h2").text();
+		cities = [];
 
-
-	var cities = [];
-
+// Populate the cities array to generate the list of cities that have specials, and give IDs to the H2 elements that the list will ink to.
 	$("div.content h2").each(function() { 
-		cities.push( $(this).text() ) 
+		cities.push( $(this).text() )
 	});
 
-	$("#citiesWithSpecials").append(cities);
 
-	// $.each(cities, function(index, item) {
-	// 	$(cities[index]).wrap("<li><a> </a></li>");
-	// });
-
+	$("div.content h2").each(function(i) {
+		$(this).attr("id", "city" + i);
+	});
 
 
-	// $.each(citiesWithSpecials, function() {
-	// 	$(this).wrap("<li><a> </a></li>");
-	// });
+//Wrap the cities array text in list item and anchor tags.
 
-	//console.log(citiesWithSpecials);
-
-	// $("ul#citiesList").append(function() {
-	// 	$.each(citiesWithSpecials, function() {
-	// 		$(this).wrap("<li><a> </a></li>");
-			
-	// 		//console.log(citiesWithSpecials[index].html = value);
-
-	// 		});
-	// 	});
-
-
-	//$(citiesWithSpecialsList).wrap("<a> </a>").addClass("citiesList");
-
-	//$("div.content h1").after(citiesWithSpecials);
-
-	//$()
+	$.each(cities, function(index, value) {
+		var link = "#city" + index;
+		$("#citiesWithSpecials").append('<li><a href="'+link+'">' + value + ' </a></li>');
+	});
 
 });
+

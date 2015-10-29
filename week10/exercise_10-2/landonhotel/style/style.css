@@ -115,7 +115,12 @@ form{
     z-index: 2;
 }
 
-.citiesList {
+.listOfCities {
 	color: #602E8B;
 	text-decoration: underline;
+}
+
+.listOfCities a:hover {
+	cursor: hand;
+	cursor: pointer;
 }
