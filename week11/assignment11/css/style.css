@@ -168,3 +168,7 @@ img.icon {
 .hidden {
 	display: none;
 }
+
+#sidebar-content h2:hover {
+	cursor: pointer;
+}
