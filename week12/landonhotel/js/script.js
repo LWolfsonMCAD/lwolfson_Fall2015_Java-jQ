@@ -21,30 +21,40 @@
 
 function heroImageLoop() {
 	var currentDiv = $("#hero div.current");
-	var nextDiv;
-	// var nextDiv = ($(currentDiv).next().length > 0) ? $(currentDiv).next() : $("#hero div:first");
+	//var nextDiv;
+	var nextDiv = ($(currentDiv).next().length > 0) ? $(currentDiv).next() : $("#hero div:first");
 
-	if ( $(currentDiv).next().length > 0)  {
-			nextDiv = $(currentDiv).next();
+	// if ( $(currentDiv).next().length > 0)  {
+	// 		nextDiv = $(currentDiv).next();
 
-		$(nextDiv).addClass("next");
+		//$(nextDiv).addClass("next");
+		
+
 
 		$( currentDiv )
-    		.fadeToggle(2000)
 		    .queue(function() {
-		      $( this ).toggleClass( "current" ).dequeue();
+		      $( this ).toggleClass( "current" ).toggleClass("previous").dequeue();
 		    })
-		    .queue(function() {	
-		      $( this ).next().toggleClass( "current" ).removeClass("next").dequeue();
+		    .queue(function() {
+		    	$( nextDiv ).toggleClass( "current" ).removeClass( "previous" ).dequeue();
 		    });
 
-		}
+		// $( nextDiv )
+		// 	.css("opacity", 0.0)
+		// 	.queue(function() {
+		// 		$( this ).toggleClass( "current" ).dequeue;
+		// 	})
+		//     // .queue(function() {	
+		//     //   $( this ).next().toggleClass( "current" ).removeClass("previous").dequeue();
+		//     });	
 
-	else {
+		//}
 
-		nextDiv = $("#hero div:first");
+	// else {
+
+	// 	nextDiv = $("#hero div:first");
 			
-		$(nextDiv).addClass("current");
+	// 	$(nextDiv).addClass("current");
 
 
 		// $( currentDiv )
@@ -143,7 +153,7 @@ function heroImageLoop() {
 // }
 
 	
-}
+//}
 
 // function changeDivClasses() {
 // 	var currentDiv = $("#hero div.current");
