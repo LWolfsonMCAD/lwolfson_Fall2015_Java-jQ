@@ -1,37 +1,95 @@
-// function fadeOutCurrentPhoto(currentDiv) {
-// 		//$(currentDiv).fadeOut(2000);
-// 		//$(currentDiv).toggleClass("current").addClass("previous");
-		
-// 		setInterval(function () {
-// 			$(currentDiv).fadeOut(2000);
-// 			$(currentDiv).removeClass("current").addClass("previous");
+		// function fadeOutCurrentPhoto(currentDiv) {
+		// 		//$(currentDiv).fadeOut(2000);
+		// 		//$(currentDiv).toggleClass("current").addClass("previous");
+				
+		// 		setInterval(function () {
+		// 			$(currentDiv).fadeOut(2000);
+		// 			$(currentDiv).removeClass("current").addClass("previous");
 
-// 		}, 2000, newPrevious(currentDiv));
-	
-		
-		
-// 	}
+		// 		}, 2000, newPrevious(currentDiv));
+			
+				
+				
+		// 	}
 
-// function newPrevious() {
+		// function newPrevious() {
 
-// 	$(this).next().addClass("current");
+		// 	$(this).next().addClass("current");
 
-// }
+		// }
+
 
 function heroImageLoop() {
-	// var heroDivs = $("#hero div");
-	var currentDiv = $(".current");
+// 	// var heroDivs = $("#hero div");
+	// var currentDiv = $("#hero div.current");
+	// var nextDiv = ($(currentDiv).next().length > 0) ? $(currentDiv).next() : $("#hero div:first");
+
+
+	// $(currentDiv).fadeOut(4000);
+	// $(nextDiv).addClass("next");
+	// function() {
+	var currentDiv = $("#hero div.current");
+
 	var nextDiv = ($(currentDiv).next().length > 0) ? $(currentDiv).next() : $("#hero div:first");
 
+	// if ($(nextDiv) === $("#hero div:first")) {
+	// 	$(nextDiv).addClass("current");
+	// }
+	// else {
+	// 	$(nextDiv).addClass("next");
+	// }
+	// var firstDiv = ($(currentDiv).next().length = 0) ? $("#hero div:first") : false;
 
-	$(currentDiv).fadeOut(4000);
-	$(nextDiv).fadeIn(4000);
+	// var nextDiv;
 
-	$(currentDiv).removeClass("current").addClass("previous");
-	$(nextDiv).addClass("current").removeClass("previous");
+	// if ( $(currentDiv).next().length > 0) {
+	// 	var nextDiv = $(currentDiv).next();
+
+	// }
+
+	// if ( $(currentDiv).next().length = 0 ) {
+	// 	var nextDiv = $("#hero div:first");
+
+	// 	$(nextDiv).toggleClass("current");
+	// }
+
+	// $(currentDiv).delay(2000).fadeOut(4000);
+	// if ( ($(nextDiv)) === ($("hero div:first")) ) {
+	// 	$(this).toggleClass("current");
+	// }
+	// else {
+	$(nextDiv).addClass("next")
+
+	// }
 
 
+
+	$( currentDiv )
+    		.fadeOut(2000)
+		    .queue(function() {
+		      $( this ).toggleClass( "current" ).dequeue();
+		    })
+		    .queue(function() {	
+		      $( this ).next().toggleClass( "current" ).removeClass("next").dequeue();
+		    });
+
+// 	if ( ($(nextDiv) === ($("#hero div:first")) ) {
+// 	$(nextDiv).toggleClass("current");
+// }
+// else {
+// 	$(nextDiv).addClass("next");
+// }
+
+	
 }
+
+// function changeDivClasses() {
+// 	var currentDiv = $("#hero div.current");
+// 	var nextDiv = ($(currentDiv).next().length > 0) ? $(currentDiv).next() : $("#hero div:first");
+
+// 	$(currentDiv).removeClass("current").addClass("previous");
+// 	$(nextDiv).addClass("current").removeClass("previous");	
+// }
 
 $( document ).ready(function() {
 /*******************************
@@ -39,78 +97,121 @@ Homepage
 ********************************/
 	//Cycle through images in #hero div.
 
-	$("#hero div.current").fadeOut(4000);
+	setInterval(heroImageLoop, 2000);
 
 	// var heroDivs = $("#hero div");
-	// 	heroDivsArray = $.makeArray(heroDivs),
-	// 	i = 0;
-	heroImageLoop();
+	// var heroDivsArray = $.makeArray(heroDivs)
+	// var i = 0;
 
-	setInterval(heroImageLoop, 4000);
+	// while (i < heroDivsArray.length) {
 
+	// 	if ( $(heroDivsArray[i]).hasClass("current") ) {
+	// 		$(heroDivsArray[i]).fadeOut(4000)
+	// 	    	   .next()
+	// 	    	   .addClass("previous");
 
+	// 	    break;
+	// 	}	
 
-
-	
-
-
-	// while (i <= heroDivsArray.length) {
-	// 	console.log( $(heroDivsArray[i]).addClass("yay") );
 	// 	i++;
 	// }
 
-	// $.each(heroDivs, function() {
-	// 	if ( $(this).hasClass("current") ) {
-	// 		var currentDiv = $(this);
+	// while (i < heroDivsArray.length) {
+
+	// 	if ( $(heroDivsArray[i]).hasClass("previous") ) {
+	// 		$(heroDivsArray[i]).addClass("current")
+	// 	    	   				.next()
+	// 	    	   				.addClass("previous");
+	// 	}		
+
+	// 	i++;
+	// }
+	
+	// $("#hero div.current").delay(2000).fadeOut(5000);
+
+	//$("#hero div.current").next().addClass("next").delay(8000).fadeOut(4000);
+
+
+
+
+	//heroImageLoop();
+
+	//changeDivClasses();
+
+			//$("#hero div.current").delay(8000).fadeOut(4000);
+
+			// var heroDivs = $("#hero div");
+			// 	heroDivsArray = $.makeArray(heroDivs),
+			// 	i = 0;
+
+
+			//setTimeout(heroImageLoop, 4000);
+
 			
-	// 		fadeOutCurrentPhoto(currentDiv);
-
-	// 	}
-
-	// 	if ( $(this).hasClass("previous") ) {
-	// 		$(this).next("div").addClass("current");
-	// 	}
-
-	// });
-
-	// $.each(heroDivs, function() {
-	// 	if ( $(this).hasClass("previous") ) {
-	// 		$(this).next("div").addClass("current");
-	// 	}
-	// });
-
-	// $.each(heroDivs, function() {
-	// 	var currentDiv = $(this);
-
-	// 	if ($(this).hasClass("current")) {
-
-	// 		$(currentDiv).fadeOut(2000);
-
-	// 		//fadeOutCurrentPhoto(currentDiv);
-
-	// 		// $(currentDiv).next().addClass("current");
-
-	// 	}
-
-	//});
-
-	// a div needs to have the .current class
-	// when it does, it should display for 2 seconds, then fade 
-	// then the next div will be on top
-	// repeat
 
 
 
-// #hero div {
-//     position:absolute;
-//     z-index: 0;
-// }
-// #hero div.previous {
-//     z-index: 1;
-// }
-// #hero div.current {
-//     z-index: 2;
-// }
+
+			
+
+
+			// while (i <= heroDivsArray.length) {
+			// 	console.log( $(heroDivsArray[i]).addClass("yay") );
+			// 	i++;
+			// }
+
+			// $.each(heroDivs, function() {
+			// 	if ( $(this).hasClass("current") ) {
+			// 		var currentDiv = $(this);
+					
+			// 		fadeOutCurrentPhoto(currentDiv);
+
+			// 	}
+
+			// 	if ( $(this).hasClass("previous") ) {
+			// 		$(this).next("div").addClass("current");
+			// 	}
+
+			// });
+
+			// $.each(heroDivs, function() {
+			// 	if ( $(this).hasClass("previous") ) {
+			// 		$(this).next("div").addClass("current");
+			// 	}
+			// });
+
+			// $.each(heroDivs, function() {
+			// 	var currentDiv = $(this);
+
+			// 	if ($(this).hasClass("current")) {
+
+			// 		$(currentDiv).fadeOut(2000);
+
+			// 		//fadeOutCurrentPhoto(currentDiv);
+
+			// 		// $(currentDiv).next().addClass("current");
+
+			// 	}
+
+			//});
+
+			// a div needs to have the .current class
+			// when it does, it should display for 2 seconds, then fade 
+			// then the next div will be on top
+			// repeat
+
+
+
+		// #hero div {
+		//     position:absolute;
+		//     z-index: 0;
+		// }
+		// #hero div.previous {
+		//     z-index: 1;
+		// }
+		// #hero div.current {
+		//     z-index: 2;
+		// }
 
 
 /*******************************

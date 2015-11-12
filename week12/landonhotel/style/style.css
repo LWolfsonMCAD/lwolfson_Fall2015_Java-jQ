@@ -108,12 +108,14 @@ form{
     position:absolute;
     z-index: 0;
 }
-#hero div.previous {
+#hero div.previous,
+#hero div.next {
     z-index: 1;
 }
 #hero div.current {
     z-index: 2;
 }
+
 
 
 /*******************************
