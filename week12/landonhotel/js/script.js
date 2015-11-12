@@ -20,6 +20,54 @@
 
 
 function heroImageLoop() {
+	var currentDiv = $("#hero div.current");
+	var nextDiv;
+	// var nextDiv = ($(currentDiv).next().length > 0) ? $(currentDiv).next() : $("#hero div:first");
+
+	if ( $(currentDiv).next().length > 0)  {
+			nextDiv = $(currentDiv).next();
+
+		$(nextDiv).addClass("next");
+
+		$( currentDiv )
+    		.fadeToggle(2000)
+		    .queue(function() {
+		      $( this ).toggleClass( "current" ).dequeue();
+		    })
+		    .queue(function() {	
+		      $( this ).next().toggleClass( "current" ).removeClass("next").dequeue();
+		    });
+
+		}
+
+	else {
+
+		nextDiv = $("#hero div:first");
+			
+		$(nextDiv).addClass("current");
+
+
+		// $( currentDiv )
+  //   		.fadeToggle(2000)
+		//     .queue(function() {
+		//       $( this ).toggleClass( "current" ).dequeue();
+		//     })
+		//     .queue(function() {	
+		//       $( this ).next().toggleClass( "current" ).removeClass("next").dequeue();
+		//     });
+	}
+
+	// $(nextDiv).addClass("next");
+
+	// $( currentDiv )
+ //    		.fadeToggle(2000)
+	// 	    .queue(function() {
+	// 	      $( this ).toggleClass( "current" ).dequeue();
+	// 	    })
+	// 	    .queue(function() {	
+	// 	      $( this ).next().toggleClass( "current" ).removeClass("next").dequeue();
+	// 	    });
+
 // 	// var heroDivs = $("#hero div");
 	// var currentDiv = $("#hero div.current");
 	// var nextDiv = ($(currentDiv).next().length > 0) ? $(currentDiv).next() : $("#hero div:first");
@@ -28,9 +76,19 @@ function heroImageLoop() {
 	// $(currentDiv).fadeOut(4000);
 	// $(nextDiv).addClass("next");
 	// function() {
-	var currentDiv = $("#hero div.current");
 
-	var nextDiv = ($(currentDiv).next().length > 0) ? $(currentDiv).next() : $("#hero div:first");
+
+	// if ( $(currentDiv).next().length === 0 ) {
+	// 	nextDiv = $("#hero div:first");
+
+	// 	$(nextDiv).addClass("current");
+	// }
+	// else {
+	// 	nextDiv = $(currentDiv).next();
+	// }
+
+
+
 
 	// if ($(nextDiv) === $("#hero div:first")) {
 	// 	$(nextDiv).addClass("current");
@@ -58,20 +116,24 @@ function heroImageLoop() {
 	// 	$(this).toggleClass("current");
 	// }
 	// else {
-	$(nextDiv).addClass("next")
+
+
+	// if ( $(currentDiv).next().length === 0 ) {
+	// 	nextDiv = $("#hero div:first");
+
+	// 	$(nextDiv).addClass("current").toggleClass("next");
+
+		
+	// }
+	// else {
+	// 	nextDiv = $(currentDiv).next();
+	// }
 
 	// }
 
 
 
-	$( currentDiv )
-    		.fadeOut(2000)
-		    .queue(function() {
-		      $( this ).toggleClass( "current" ).dequeue();
-		    })
-		    .queue(function() {	
-		      $( this ).next().toggleClass( "current" ).removeClass("next").dequeue();
-		    });
+	
 
 // 	if ( ($(nextDiv) === ($("#hero div:first")) ) {
 // 	$(nextDiv).toggleClass("current");
@@ -97,7 +159,9 @@ Homepage
 ********************************/
 	//Cycle through images in #hero div.
 
-	setInterval(heroImageLoop, 2000);
+	setInterval(heroImageLoop, 3000);
+
+	//heroImageLoop(setInterval(heroImageLoop, 3000));
 
 	// var heroDivs = $("#hero div");
 	// var heroDivsArray = $.makeArray(heroDivs)
