@@ -32,12 +32,18 @@ function heroImageLoop() {
 
 
 		$( currentDiv )
+			// .queue(function() {
+		 //    	$( this ).css("opacity", 0).fadeTo(1000, 1.0);
+		 //    })
 		    .queue(function() {
 		      $( this ).toggleClass( "current" ).toggleClass("previous").dequeue();
 		    })
 		    .queue(function() {
-		    	$( nextDiv ).toggleClass( "current" ).removeClass( "previous" ).dequeue();
-		    });
+		    	$( nextDiv ).css({ opacity: 0.0 }).toggleClass( "current" ).animate({ opacity: 1.0 }, 1000, function() {
+		    		$( currentDiv ).removeClass( "previous" );
+		    	}).dequeue();
+		    })
+		    ;
 
 		// $( nextDiv )
 		// 	.css("opacity", 0.0)
