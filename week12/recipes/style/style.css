@@ -1,0 +1,97 @@
+html {
+	background-color: #ff5050;	
+}
+
+body {
+	width: 90%;
+	max-width: 960px;
+	margin: 50px auto;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #555;
+}
+
+.clearfix:after { 
+   content: " ";
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+
+div.container {
+	width: 100%;
+	height: auto;
+	padding: 15px;
+	background-color: #ffe5e5;
+}
+
+nav.main-navigation {
+	float: left;
+	width: 30%;
+}
+
+ul#menu-main-menu {
+	padding: 0;
+	list-style: none;
+}
+
+ul#menu-main-menu li {
+	width: 201px;
+	margin-bottom: 10px;
+	line-height: 3em;
+	text-align: center;
+	background-color: #990033;
+}
+
+ul#menu-main-menu li a {
+	padding: 15px 40px;
+	text-decoration: none;
+	color: #ffffff;
+}
+
+ul#menu-main-menu li:last-child a {
+	padding: 15px;
+}
+
+div.content {
+	float: left;
+	width: 65%;
+}
+
+div#recipeDisplay {
+	position: relative;
+	width: 100%;
+	background-color: #ffffff;
+}
+
+div.recipe {
+	display: none;
+}
+
+div.recipe h2 {
+	color: #990033;
+}
+
+h3.description {
+	font-size: 1em;
+	color: #990033;
+}
+
+ul.cookTimes {
+	padding: 0;
+	list-style: none;
+}
+
+div.recipe h4 {
+	margin-bottom: 10px;
+}
+
+ul.ingredientList {
+	padding-left: 10px;
+	list-style: none;
+}
+
+ol.directionsList {
+	padding-left: 33px;
+}
+
+
