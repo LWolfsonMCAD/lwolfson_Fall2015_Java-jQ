@@ -42,6 +42,12 @@ ul#menu-main-menu li {
 	background-color: #990033;
 }
 
+ul#menu-main-menu li.currentButton,
+ul#menu-main-menu li.activeButton {
+	background-color: #ff1a66;
+}
+
+
 ul#menu-main-menu li a {
 	padding: 15px 40px;
 	text-decoration: none;
@@ -60,7 +66,14 @@ div.content {
 div#recipeDisplay {
 	position: relative;
 	width: 100%;
+	padding: 10px;
 	background-color: #ffffff;
+}
+
+div.currentRecipe {
+	display: block;
+	width: 100%;
+	height: auto;
 }
 
 div.recipe {
@@ -69,6 +82,12 @@ div.recipe {
 
 div.recipe h2 {
 	color: #990033;
+}
+
+div.right {
+	float: right;
+	width: 40%;
+	margin-left: 10px;
 }
 
 h3.description {
