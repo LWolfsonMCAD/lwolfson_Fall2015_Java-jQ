@@ -1,8 +1,71 @@
-$( document ).ready(function() {
-	$('head').append('<link href="css/jquery.powertip-light.min.css" rel="stylesheet" type="text/css" />');
+var 
+    churchillSpeech = {
+      'author': 'Churchill',
+      'year': 1940,
+      'yearIsBCE': false,
+      'authorAge': '66'
+    },
+    ghandiSpeech = {
+      'author': 'Ghandi',
+      'year': 1942,
+      'yearIsBCE': false,
+      'authorAge': '73'
+    },
+    demosthenesSpeech = {
+      'author': 'Demosthenes',
+      'year': 342,
+      'yearIsBCE': true,
+      'authorAge': '42'
+    },
+    speechesArray = [churchillSpeech, ghandiSpeech, demosthenesSpeech],
+    donatePrompt,
+    amountToBeDonated,
+    speechArticles = $(".main-content article");
+  ;
 
+
+// //Custom functions.
+// function getAuthorAndYearString (currentSpeech) {
+//   var speechAuthor = currentSpeech.author,
+//       speechYear = currentSpeech.year; 
+  
+//   return ("This speech was written by " + speechAuthor + " in " + speechYear + ". </br>"); 
+// }
+
+function getAuthorAndYearString (chosenSpeech) {
+    switch (chosenSpeech) {
+      case "Churchill":
+          i = 0;
+          break;
+
+      case "Ghandi":
+          i = 1;
+          break;
+
+      case "Demosthenes":
+          i = 2;
+          break;
+
+      case "Donate" : 
+          donationDisplay(); 
+          break;
+
+      default:
+          break;
+    }
+
+    return("This speech was written by " + speechesArray[i].author + " in " + speechesArray[i].year + ". </br>");
+}
+
+
+
+$( document ).ready(function() {
 	var speechTitles = $(".main-content h2"),
 		speeches = $("div.speech");
+
+
+//Set up style if jQuery is enabled...add PowerTip stylesheet, hide speeches, change SideNav position.
+	$('head').append('<link href="css/jquery.powertip-light.min.css" rel="stylesheet" type="text/css" />');
 
 	$( speeches ).hide();
 
@@ -13,13 +76,31 @@ $( document ).ready(function() {
 			});
 
 
-	$( speechTitles ).powerTip({
-	    placement: 'nw',
-	    smartPlacement: true
-	});	
+//Run functions to show info about each speech.
 
-	$( speechTitles ).data('powertip', 'This will be the <b>tooltip text</b>.');	
 
+
+
+	$(".info")
+			.powerTip({
+			    placement: 'e',
+			    smartPlacement: true
+			})
+			.mouseenter(function() {
+				var chosenSpeech = $(this).closest("article").attr("id");
+
+				$( this )
+					.data(
+						'powertip', function() {
+							speechAuthor = $( "article#" + chosenSpeech ).find(".author").text(),
+							speechYear = $( "article#" + chosenSpeech ).find(".date").text(),
+							infoText = "This speech was written by " + speechAuthor + " on " + speechYear;
+
+							return infoText;
+						}
+					);
+			});
+	;
 
 	$( speechTitles ).click(function() {
 		var speechDiv = $(this).closest("article").find("div.speech");
