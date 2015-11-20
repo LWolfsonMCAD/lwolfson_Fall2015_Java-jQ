@@ -1,85 +1,165 @@
-var 
-    churchillSpeech = {
-      'author': 'Churchill',
-      'year': 1940,
-      'yearIsBCE': false,
-      'authorAge': '66'
-    },
-    ghandiSpeech = {
-      'author': 'Ghandi',
-      'year': 1942,
-      'yearIsBCE': false,
-      'authorAge': '73'
-    },
-    demosthenesSpeech = {
-      'author': 'Demosthenes',
-      'year': 342,
-      'yearIsBCE': true,
-      'authorAge': '42'
-    },
-    speechesArray = [churchillSpeech, ghandiSpeech, demosthenesSpeech],
-    donatePrompt,
-    amountToBeDonated,
-    speechArticles = $(".main-content article");
-  ;
+var
+		churchillSpeech = {
+	      'author': 'Churchill',
+	      'year': 1940,
+	      'yearIsBCE': false,
+	      'authorAge': '66'
+	    },
+	    ghandiSpeech = {
+	      'author': 'Ghandi',
+	      'year': 1942,
+	      'yearIsBCE': false,
+	      'authorAge': '73'
+	    },
+	    demosthenesSpeech = {
+	      'author': 'Demosthenes',
+	      'year': 342,
+	      'yearIsBCE': true,
+	      'authorAge': '42'
+	    },
+	    speechesArray = [churchillSpeech, ghandiSpeech, demosthenesSpeech],
+	    donatePrompt,
+	    amountToBeDonated
+	;
 
 
-// //Custom functions.
-// function getAuthorAndYearString (currentSpeech) {
-//   var speechAuthor = currentSpeech.author,
-//       speechYear = currentSpeech.year; 
-  
-//   return ("This speech was written by " + speechAuthor + " in " + speechYear + ". </br>"); 
+// function displayBCEString (yearIsBCE) {
+//   if(yearIsBCE === true){
+//       return ("This speech took place before the common era. <br>");
+//   }else{
+//       return ("This speech took place during the common era. <br>"); 
+//   }
 // }
 
-function getAuthorAndYearString (chosenSpeech) {
-    switch (chosenSpeech) {
-      case "Churchill":
-          i = 0;
-          break;
 
-      case "Ghandi":
-          i = 1;
-          break;
+ 
+// function getButtonId(btn) {
+//     var clickedItem = $( btn ).attr("id");
 
-      case "Demosthenes":
-          i = 2;
-          break;
+//         switch (clickedItem) {
+//           case "BtnChurchill":
+//               i = 0;
+//               break;
 
-      case "Donate" : 
-          donationDisplay(); 
-          break;
+//           case "BtnGhandi":
+//               i = 1;
+//               break;
 
-      default:
-          break;
-    }
+//           case "BtnDemosthenes":
+//               i = 2;
+//               break;
 
-    return("This speech was written by " + speechesArray[i].author + " in " + speechesArray[i].year + ". </br>");
-}
+//           case "BtnDonate" : 
+//               donationDisplay(); 
+//               break;
+
+//           default:
+//               break;
+//         }
+
+//       if (clickedItem === "BtnDonate") {
+//         var consoleDisplay = $('#ConsoleDisplay');
+//         while (consoleDisplay.hasChildNodes()){
+//             consoleDisplay.removeChild(consoleDisplay.firstChild);
+//         }
+//       }
+//       else {
+//         $('#ConsoleDisplay').HTML() += displayBCEString(speechesArray[i].yearIsBCE);
+
+//         $('#ConsoleDisplay').HTML() += getOldestOrYoungestString(speechesArray[i].year);
+
+//         clearDonationDisplay();
+//       }
 
 
+//     }
+//     btn.stopPropagation();
+// }
+
+// function getOldestOrYoungestString (speechYear) {
+//   var oldestSpeech = speechesArray[0].year,
+//       newestSpeech = speechesArray[0].year;
+
+//   for(var i = 0; i < speechesArray.length; i++){
+//     if(speechesArray[i].year < oldestSpeech){
+//         oldestSpeech = speechesArray[i].year;
+//     }
+//     if(speechesArray[i].year > newestSpeech){
+//         newestSpeech = speechesArray[i].year;
+//     }
+//   }
+
+//   if(speechYear === oldestSpeech){
+//       return ("This is the oldest speech on the page.<br>");
+//   }
+//   else if(speechYear === newestSpeech){
+//       return ("This is the most recent speech on the page.<br>");
+//   }
+//   else {
+//       return ("This is not the oldest or most recent speech on the page.<br>");
+//   }
+// }
 
 $( document ).ready(function() {
-	var speechTitles = $(".main-content h2"),
-		speeches = $("div.speech");
-
+	var 
+		speechTitles = $(".main-content h2"),
+		speeches = $("div.speech"),
+		sideNav = $("#SideNav"),
+		speechArticles = $(".main-content article");
+		comparisonSpeech = $(speechesArray).get(0).year.toString();
 
 //Set up style if jQuery is enabled...add PowerTip stylesheet, hide speeches, change SideNav position.
 	$('head').append('<link href="css/jquery.powertip-light.min.css" rel="stylesheet" type="text/css" />');
 
-	$( speeches ).hide();
+	$( speeches ).add(".author, .date").hide();
 
 	$("div.fixed-container")
-			.css({
-				"z-index" : "-1",
-				"top" : "50"
-			});
+			// .css({
+			// 	"z-index" : "-1",
+			// 	"top" : "50"
+			// });
+			.removeAttr( 'style' );
+
+	console.log(comparisonSpeech);
+
+	$( "a", sideNav ).click(function() {
+		var button = $(this).attr("id");
+
+		console.log(button);
+	});
 
 
-//Run functions to show info about each speech.
+// function getOldestOrYoungestString (speechYear) {
+//   var oldestSpeech = speechesArray[0].year,
+//       newestSpeech = speechesArray[0].year;
 
+//   for(var i = 0; i < speechesArray.length; i++){
+//     if(speechesArray[i].year < oldestSpeech){
+//         oldestSpeech = speechesArray[i].year;
+//     }
+//     if(speechesArray[i].year > newestSpeech){
+//         newestSpeech = speechesArray[i].year;
+//     }
+//   }
 
+//   if(speechYear === oldestSpeech){
+//       return ("This is the oldest speech on the page.<br>");
+//   }
+//   else if(speechYear === newestSpeech){
+//       return ("This is the most recent speech on the page.<br>");
+//   }
+//   else {
+//       return ("This is not the oldest or most recent speech on the page.<br>");
+//   }
+// }
 
+ 	// $( sideNav ).click(function() {
+ 	// 	var btn = $(this);
+
+ 	// 	getButtonId(btn);
+ 	// });
+
+//Display information about each speech when user hovers over it.
 
 	$(".info")
 			.powerTip({
@@ -92,6 +172,11 @@ $( document ).ready(function() {
 				$( this )
 					.data(
 						'powertip', function() {
+							if(chosenSpeech == "Churchill") {
+
+							}
+
+
 							speechAuthor = $( "article#" + chosenSpeech ).find(".author").text(),
 							speechYear = $( "article#" + chosenSpeech ).find(".date").text(),
 							infoText = "This speech was written by " + speechAuthor + " on " + speechYear;
@@ -105,9 +190,11 @@ $( document ).ready(function() {
 	$( speechTitles ).click(function() {
 		var speechDiv = $(this).closest("article").find("div.speech");
 
-		$(speechDiv).slideToggle(1000);
+		$(speechDiv).slideToggle(600);
+
 		
 	});
+
 
 
 });
