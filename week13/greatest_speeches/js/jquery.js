@@ -18,146 +18,76 @@ var
 	      'authorAge': '42'
 	    },
 	    speechesArray = [churchillSpeech, ghandiSpeech, demosthenesSpeech],
+	    yearsArray = [churchillSpeech.year, ghandiSpeech.year, demosthenesSpeech.year],
 	    donatePrompt,
 	    amountToBeDonated
 	;
 
-
-// function displayBCEString (yearIsBCE) {
-//   if(yearIsBCE === true){
-//       return ("This speech took place before the common era. <br>");
-//   }else{
-//       return ("This speech took place during the common era. <br>"); 
-//   }
-// }
-
-
- 
-// function getButtonId(btn) {
-//     var clickedItem = $( btn ).attr("id");
-
-//         switch (clickedItem) {
-//           case "BtnChurchill":
-//               i = 0;
-//               break;
-
-//           case "BtnGhandi":
-//               i = 1;
-//               break;
-
-//           case "BtnDemosthenes":
-//               i = 2;
-//               break;
-
-//           case "BtnDonate" : 
-//               donationDisplay(); 
-//               break;
-
-//           default:
-//               break;
-//         }
-
-//       if (clickedItem === "BtnDonate") {
-//         var consoleDisplay = $('#ConsoleDisplay');
-//         while (consoleDisplay.hasChildNodes()){
-//             consoleDisplay.removeChild(consoleDisplay.firstChild);
-//         }
-//       }
-//       else {
-//         $('#ConsoleDisplay').HTML() += displayBCEString(speechesArray[i].yearIsBCE);
-
-//         $('#ConsoleDisplay').HTML() += getOldestOrYoungestString(speechesArray[i].year);
-
-//         clearDonationDisplay();
-//       }
-
-
-//     }
-//     btn.stopPropagation();
-// }
-
-// function getOldestOrYoungestString (speechYear) {
-//   var oldestSpeech = speechesArray[0].year,
-//       newestSpeech = speechesArray[0].year;
-
-//   for(var i = 0; i < speechesArray.length; i++){
-//     if(speechesArray[i].year < oldestSpeech){
-//         oldestSpeech = speechesArray[i].year;
-//     }
-//     if(speechesArray[i].year > newestSpeech){
-//         newestSpeech = speechesArray[i].year;
-//     }
-//   }
-
-//   if(speechYear === oldestSpeech){
-//       return ("This is the oldest speech on the page.<br>");
-//   }
-//   else if(speechYear === newestSpeech){
-//       return ("This is the most recent speech on the page.<br>");
-//   }
-//   else {
-//       return ("This is not the oldest or most recent speech on the page.<br>");
-//   }
-// }
 
 $( document ).ready(function() {
 	var 
 		speechTitles = $(".main-content h2"),
 		speeches = $("div.speech"),
 		sideNav = $("#SideNav"),
-		speechArticles = $(".main-content article");
-		comparisonSpeech = $(speechesArray).get(0).year.toString();
+		speechArticles = $(".main-content article"),
+		oldestSpeech = Math.min.apply(Math, yearsArray),
+		newestSpeech = Math.max.apply(Math, yearsArray);
 
-//Set up style if jQuery is enabled...add PowerTip stylesheet, hide speeches, change SideNav position.
+
+//Set up style if jQuery is enabled...add PowerTip stylesheet, hide speeches, change SideNav position and styles so users can hover/click on speech titles.
 	$('head').append('<link href="css/jquery.powertip-light.min.css" rel="stylesheet" type="text/css" />');
 
 	$( speeches ).add(".author, .date").hide();
 
-	$("div.fixed-container")
-			// .css({
-			// 	"z-index" : "-1",
-			// 	"top" : "50"
-			// });
-			.removeAttr( 'style' );
+	$("div.fixed-container").addClass("jq_fixed-container").removeClass("fixed-container");
 
-	console.log(comparisonSpeech);
+	$( sideNav ).addClass("jq_side-nav").removeClass("side-nav");
+
+
+//Button functions to display more information about the speeches.
 
 	$( "a", sideNav ).click(function() {
-		var button = $(this).attr("id");
+		var button = $(this).attr("id"),
+			chosenButtonYear;
 
-		console.log(button);
+		switch (button) {
+          case "BtnChurchill":
+              i = 0;
+              break;
+
+          case "BtnGhandi":
+              i = 1;
+              break;
+
+          case "BtnDemosthenes":
+              i = 2;
+              break;
+
+          // case "BtnDonate" : 
+          //     donationDisplay(); 
+          //     break;
+
+          default:
+              break;
+        }
+
+        chosenButtonYear = $( speechesArray ).get(i).year;
+
+    //Determine if the speech is oldest or newest on the page, and display a message that corresponds with the answer.
+
+        if (chosenButtonYear === oldestSpeech) {
+        	$("#ConsoleDisplay").html("<p>This speech is the oldest speech on the page.</p>");
+        }
+        else if (chosenButtonYear === newestSpeech) {
+        	$("#ConsoleDisplay").html("<p>This speech is the newest speech on the page.</p>");
+        }
+        else {
+        	$("#ConsoleDisplay").html("<p>This speech is neither the oldest or the newest speech on the page.</p>");
+        }
+        
+		
 	});
 
-
-// function getOldestOrYoungestString (speechYear) {
-//   var oldestSpeech = speechesArray[0].year,
-//       newestSpeech = speechesArray[0].year;
-
-//   for(var i = 0; i < speechesArray.length; i++){
-//     if(speechesArray[i].year < oldestSpeech){
-//         oldestSpeech = speechesArray[i].year;
-//     }
-//     if(speechesArray[i].year > newestSpeech){
-//         newestSpeech = speechesArray[i].year;
-//     }
-//   }
-
-//   if(speechYear === oldestSpeech){
-//       return ("This is the oldest speech on the page.<br>");
-//   }
-//   else if(speechYear === newestSpeech){
-//       return ("This is the most recent speech on the page.<br>");
-//   }
-//   else {
-//       return ("This is not the oldest or most recent speech on the page.<br>");
-//   }
-// }
-
- 	// $( sideNav ).click(function() {
- 	// 	var btn = $(this);
-
- 	// 	getButtonId(btn);
- 	// });
 
 //Display information about each speech when user hovers over it.
 
@@ -172,14 +102,9 @@ $( document ).ready(function() {
 				$( this )
 					.data(
 						'powertip', function() {
-							if(chosenSpeech == "Churchill") {
-
-							}
-
-
 							speechAuthor = $( "article#" + chosenSpeech ).find(".author").text(),
 							speechYear = $( "article#" + chosenSpeech ).find(".date").text(),
-							infoText = "This speech was written by " + speechAuthor + " on " + speechYear;
+							infoText = "This speech was written by " + speechAuthor + " on " + speechYear + "<br>Click to read the speech";
 
 							return infoText;
 						}
@@ -199,44 +124,12 @@ $( document ).ready(function() {
 
 });
 
-//For readability and clarity it is good practice to declare variables at the beginning of the JS document if possible
-// var 
-//     churchillSpeech = {
-//       'author': 'Churchill',
-//       'year': 1940,
-//       'yearIsBCE': false,
-//       'authorAge': '66'
-//     },
-//     ghandiSpeech = {
-//       'author': 'Ghandi',
-//       'year': 1942,
-//       'yearIsBCE': false,
-//       'authorAge': '73'
-//     },
-//     demosthenesSpeech = {
-//       'author': 'Demosthenes',
-//       'year': 342,
-//       'yearIsBCE': true,
-//       'authorAge': '42'
-//     },
-//     speechesArray = [churchillSpeech, ghandiSpeech, demosthenesSpeech],
-//     donatePrompt,
-//     amountToBeDonated,
-//     speechArticles = document.getElementsByTagName("article")
-//   ;
 
 // //Elements created with JS
 //   var sideNavHeading = document.createElement("h3");
 //   document.getElementById("SideNav").appendChild(sideNavHeading);
 
 
-// //Custom functions.
-// function getAuthorAndYearString (currentSpeech) {
-//   var speechAuthor = currentSpeech.author,
-//       speechYear = currentSpeech.year; 
-  
-//   return ("This speech was written by " + speechAuthor + " in " + speechYear + ". </br>"); 
-// }
 
 // function displayBCEString (yearIsBCE) {
 //   if(yearIsBCE === true){
@@ -246,29 +139,7 @@ $( document ).ready(function() {
 //   }
 // }
 
-// function getOldestOrYoungestString (speechYear) {
-//   var oldestSpeech = speechesArray[0].year,
-//       newestSpeech = speechesArray[0].year;
 
-//   for(var i = 0; i < speechesArray.length; i++){
-//     if(speechesArray[i].year < oldestSpeech){
-//         oldestSpeech = speechesArray[i].year;
-//     }
-//     if(speechesArray[i].year > newestSpeech){
-//         newestSpeech = speechesArray[i].year;
-//     }
-//   }
-
-//   if(speechYear === oldestSpeech){
-//       return ("This is the oldest speech on the page.<br>");
-//   }
-//   else if(speechYear === newestSpeech){
-//       return ("This is the most recent speech on the page.<br>");
-//   }
-//   else {
-//       return ("This is not the oldest or most recent speech on the page.<br>");
-//   }
-// }
 
 
 // function donationDisplay () {

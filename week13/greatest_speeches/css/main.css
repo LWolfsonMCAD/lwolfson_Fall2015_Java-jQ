@@ -95,9 +95,21 @@ h2:hover {
   margin: 170px auto 0;
 }
 
+.jq_fixed-container {
+  float: right;
+  position: relative;
+  width: 240px;
+  max-width: 240px;
+  margin: 0;
+}
+
   .side-nav {
     float: right;
     width: 25%;
+  }
+
+  .jq_side-nav {
+    width: 100%;
   }
 
 .nav-button {
