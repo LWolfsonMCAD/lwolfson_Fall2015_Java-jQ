@@ -34,21 +34,41 @@ $( document ).ready(function() {
 		newestSpeech = Math.max.apply(Math, yearsArray);
 
 
-//Set up style if jQuery is enabled...add PowerTip stylesheet, hide speeches, change SideNav position and styles so users can hover/click on speech titles.
+/****************************************
+Set up if user enables jQuery/js
+*****************************************/
 	$('head').append('<link href="css/jquery.powertip-light.min.css" rel="stylesheet" type="text/css" />');
 
 	$( speeches ).add(".author, .date").hide();
 
-	$("div.fixed-container").addClass("jq_fixed-container").removeClass("fixed-container");
 
-	$( sideNav ).addClass("jq_side-nav").removeClass("side-nav");
+/****************************************
+Sticky div for side nav buttons.
+*****************************************/
+	function sticky_relocate() {
+	    var window_top = $(window).scrollTop();
+	    var div_top = $('#sticky-anchor').offset().top;
+	    if (window_top > div_top) {
+	        $("div.fixed-container").addClass('sticky');
+	    } else {
+	        $("div.fixed-container").removeClass('sticky');
+	    }
+	}
+
+	$(function () {
+	    $(window).scroll(sticky_relocate);
+	    sticky_relocate();
+	});
 
 
-//Button functions to display more information about the speeches.
+
+/****************************************
+Side Nav button click event handlers
+*****************************************/
 
 	$( "a", sideNav ).click(function() {
 		var button = $(this).attr("id"),
-			chosenButtonYear;
+			chosenButton;
 
 		switch (button) {
           case "BtnChurchill":
@@ -63,33 +83,82 @@ $( document ).ready(function() {
               i = 2;
               break;
 
-          // case "BtnDonate" : 
-          //     donationDisplay(); 
-          //     break;
-
           default:
               break;
         }
 
-        chosenButtonYear = $( speechesArray ).get(i).year;
+        chosenButton = $( speechesArray ).get(i);
 
-    //Determine if the speech is oldest or newest on the page, and display a message that corresponds with the answer.
-
-        if (chosenButtonYear === oldestSpeech) {
+//Oldest and Newest Speech handlers
+        if (chosenButton.year === oldestSpeech) {
         	$("#ConsoleDisplay").html("<p>This speech is the oldest speech on the page.</p>");
         }
-        else if (chosenButtonYear === newestSpeech) {
+        else if (chosenButton.year === newestSpeech) {
         	$("#ConsoleDisplay").html("<p>This speech is the newest speech on the page.</p>");
         }
         else {
         	$("#ConsoleDisplay").html("<p>This speech is neither the oldest or the newest speech on the page.</p>");
         }
         
+
+//Before or during common era handlers
+        if (chosenButton.yearIsBCE) {
+        	$("#ConsoleDisplay p").append("<br>This speech took place before the common era.");
+        }
+
+        if (!chosenButton.yearIsBCE) {
+        	$("#ConsoleDisplay p").append("<br>This speech took place during the common era.");
+        }
+
 		
 	});
 
 
-//Display information about each speech when user hovers over it.
+//Donate Button handler/function
+
+	$("#BtnDonate").click(function() {
+			amountToBeDonated = window.prompt("How much would you like to donate?");
+
+
+		if(amountToBeDonated < 100 && amountToBeDonated !== null && amountToBeDonated > 0) {
+
+		  	$("#ConsoleDisplay")
+		  		.removeClass("generous-donation")
+		  		.empty()
+		  		.append("Thank you for your donation of $" + amountToBeDonated + ".");
+
+		  	$( speechTitles )
+      			.removeClass("generous-donation");
+		}
+
+     	else if (amountToBeDonated >= 100 && amountToBeDonated !== null) {
+      		
+      		$("#ConsoleDisplay")
+      			.empty()
+      			.append("Thank you for your generous donation!")
+      			.toggleClass("generous-donation");
+
+      		$( speechTitles )
+      			.toggleClass("generous-donation");
+
+      	}
+
+		  else {
+		    $("#ConsoleDisplay")
+		    	.empty()
+		    	.append("Please enter a valid amount.")
+		    	.removeClass("generous-donation");
+
+		    $( speechTitles )
+      			.removeClass("generous-donation");
+		  }
+	});
+
+
+
+/****************************************
+Popup over speech titles
+*****************************************/
 
 	$(".info")
 			.powerTip({
@@ -112,7 +181,12 @@ $( document ).ready(function() {
 			});
 	;
 
-	$( speechTitles ).click(function() {
+
+/****************************************
+Expand speeches when title is clicked
+*****************************************/
+
+	$( speechTitles ).add(".closeSpeech").click(function() {
 		var speechDiv = $(this).closest("article").find("div.speech");
 
 		$(speechDiv).slideToggle(600);
@@ -121,121 +195,14 @@ $( document ).ready(function() {
 	});
 
 
-
 });
 
 
-// //Elements created with JS
-//   var sideNavHeading = document.createElement("h3");
-//   document.getElementById("SideNav").appendChild(sideNavHeading);
-
-
-
-// function displayBCEString (yearIsBCE) {
-//   if(yearIsBCE === true){
-//       return ("This speech took place before the common era. <br>");
-//   }else{
-//       return ("This speech took place during the common era. <br>"); 
-//   }
-// }
 
 
 
 
-// function donationDisplay () {
 
-//   clearDonationDisplay();
-
-//   amountToBeDonated = window.prompt("How much would you like to donate?");
-
-// //Display different messages in the sideNavHeading depending on how much the user chooses to donate.
-//   if(amountToBeDonated < 100 && amountToBeDonated !== null && amountToBeDonated > 0) {
-//       var sideNavHeadingText = document.createTextNode("Thank you for your donation of $" + amountToBeDonated + ".");
-
-//       sideNavHeading.appendChild(sideNavHeadingText);
-
-//       for(i=0; i < speechArticles.length; i++){
-//         if (document.getElementsByTagName("article")[i].classList.contains("generous-donation")){
-//               document.getElementsByTagName("article")[i].classList.remove("generous-donation");
-//         }
-//       }
-
-//       sideNavHeading.setAttribute("style", "color:white");
-//   }
-//   else if (amountToBeDonated >= 100 && amountToBeDonated !== null) {
-//       var sideNavHeadingText = document.createTextNode("Thank you for your very generous donation!");
-
-//       sideNavHeading.appendChild(sideNavHeadingText);
-
-//       sideNavHeading.setAttribute("style", "color:red");
-
-//       for(i=0; i < speechArticles.length; i++){
-//         document.getElementsByTagName("article")[i].className += "generous-donation";
-//       }   
-//   }
-//   else {
-//     document.getElementById("ConsoleDisplay").innerHTML = "Please enter a valid amount.";
-//   }
-// }
-
-// function clearDonationDisplay () {
-//     if (typeof sideNavHeading !== 'undefined') { 
-//         while (sideNavHeading.hasChildNodes()) {
-//             sideNavHeading.removeChild(sideNavHeading.firstChild);
-//         }
-//     }
-// }
-
-
-// //Add event listeners to all of the author nav buttons.
-// var sideNav = document.querySelector("#SideNav");
-// sideNav.addEventListener("click", getButtonId, false);
- 
-// function getButtonId(btn) {
-//     if (btn.target !== btn.currentTarget) {
-//         var clickedItem = btn.target.id;
-
-//         switch (clickedItem) {
-//           case "BtnChurchill":
-//               i = 0;
-//               break;
-
-//           case "BtnGhandi":
-//               i = 1;
-//               break;
-
-//           case "BtnDemosthenes":
-//               i = 2;
-//               break;
-
-//           case "BtnDonate" : 
-//               donationDisplay(); 
-//               break;
-
-//           default:
-//               break;
-//         }
-
-//       if (clickedItem === "BtnDonate") {
-//         var consoleDisplay = document.getElementById('ConsoleDisplay');
-//         while (consoleDisplay.hasChildNodes()){
-//             consoleDisplay.removeChild(consoleDisplay.firstChild);
-//         }
-//       }
-//       else {
-//         document.getElementById('ConsoleDisplay').innerHTML = getAuthorAndYearString(speechesArray[i]);
-
-//         document.getElementById('ConsoleDisplay').innerHTML += displayBCEString(speechesArray[i].yearIsBCE);
-
-//         document.getElementById('ConsoleDisplay').innerHTML += getOldestOrYoungestString(speechesArray[i].year);
-
-//         clearDonationDisplay();
-//       }
-
-
-//     }
-//     btn.stopPropagation();
-// }
 
 
 
