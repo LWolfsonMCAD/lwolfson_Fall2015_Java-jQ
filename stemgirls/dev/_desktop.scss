@@ -1,0 +1,325 @@
+/************************************
+Desktop version of site
+************************************/
+* { -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box; 
+}
+
+html {
+    background-color: rgb(64,64,64);
+}
+
+body {
+	width: 960px;
+	height: 100%;
+	margin: 0px auto;	
+	font-family: helvetica, arial, sans-serif;
+	position: relative;
+	background-image: none;
+	background-color: white;
+}
+
+header {
+	background-color: #284f63;
+	width: 960px;
+	height: 162px;
+
+		.header-logo {
+			margin: 20px 27px; 
+		}
+
+		.main-nav {
+			float: left;
+			position: relative;
+			margin-left: 36px;
+			padding: 0px;
+			font-size: 1em;
+			font-weight: 300;
+		}
+
+		.main-nav, .main-nav ul {
+			list-style: none;
+		}
+
+		.main-nav li {
+			float: left;
+			margin-right: 18px;
+			padding: 10px 18px 0px 0px;
+			background-color: #284f63;
+
+				a {
+					display: block;
+					color: white;	
+					text-decoration: none;
+				}
+
+		}
+
+		.main-nav li:hover > ul {
+			display: block;
+		}
+
+
+		.sub-navigation {
+			clear: both;
+			width: 142px;
+			position: absolute;
+			top: 30px;
+			display: none;
+			padding: 0px 0px 5px 2px;
+			margin-left: -6px;
+			z-index: 10;
+			background-color: #284f63;
+			font-size: 0.875em;
+			line-height: 1.5;
+
+				li {
+					margin-right: 0px;
+					padding: 10px 0px 0px 5px;
+
+						 a {
+							display: block;
+						}
+
+				}
+
+		}
+}
+
+div.container {
+	position: relative;
+	margin: 0px 36px;
+
+		h1 {
+			margin-top: 40px;
+			font-weight: 700;
+		}
+
+
+/*If there's an introductory paragraph, this will style it*/
+		.intro {
+			height: 200px;
+			margin-bottom: 10px;
+		}
+
+		.intro p {
+			width: 575px;
+			float: left;
+			margin-top: 5px;
+			font-size: 1.125em;
+			line-height: 1.7;
+		}
+
+		.intro img {
+			width: 328px;
+			margin-left: 21px;
+			position: absolute;
+			top: -55px;
+		}
+
+
+		p {
+			font-size: 0.875em;
+			line-height: 1.4;
+		}
+
+		a {
+			text-decoration: none;
+			color: black;
+		}
+
+		a:hover {
+			font-weight: 700;
+			text-decoration: underline;
+			color: #992D5A;
+		}
+
+
+/*References section on all pages*/
+		.references {
+			clear: both;
+			width: 590px;
+			margin: 10px auto;
+			border-top: 0.5px solid #91989d;
+		}
+
+		h6 {
+			margin: 10px 0px 4px;
+		}
+
+		.references ol {
+			margin: 0px;
+			padding-left: 13px;
+		}
+
+		.references li {
+			font-size: 0.750em;
+			font-style: oblique;
+		}
+
+}
+
+/*Footer section is the same on all pages, isn't shown on homepage*/
+footer {
+	background-color: #825084;
+	width: 960px;
+	height: 76px;
+}
+
+.copyright {
+	color: white;
+	padding-top: 16px;
+	margin-left: 36px;
+	float: left;
+}
+
+.social-media-icons {
+	position: relative;
+	left: 628px;
+	padding-top: 20px;
+}
+
+
+
+/************************************
+SciGirls Seven page
+************************************/
+
+#sciseven-list {
+	height: 530px;
+	margin-bottom: 25px;
+}
+
+.sciseven {
+	width: 430px;
+}
+
+.sciseven-tip {
+	font-weight: 700;
+}
+
+#sciseven-left-column {
+	width: 458px;
+	float: left;
+	clear: none;
+}
+
+#sciseven-right-column {
+	float: left;
+	margin-bottom: 20px;
+	clear: none;
+}
+
+
+
+/************************************
+Role Models page
+************************************/
+#role-model-fields {
+	height: 100%;
+	overflow: hidden;
+	border-bottom: 0.5px solid #91989d;	
+}
+
+#role-model-fields h2 {
+	font-weight: 400;
+	font-size: 1.3em;
+	margin-bottom: 0px;
+}
+
+.field-list {
+	width: 217.5px;
+	float: left;
+	margin-left: 6px;
+}
+
+.field-list:first-of-type {
+	margin-left: 0px;
+}
+
+.science-field-list h2 {
+	color: #284f63;
+}
+
+.technology-field-list h2 {
+	color: #188754;
+}
+
+.engineering-field-list h2 {
+	color: #825084;
+}
+
+.math-field-list h2 {
+	color: #992D5A;
+}
+
+.field-list ul {
+	list-style: none;
+	padding-left: 0px;
+	margin-top: 0px;
+}
+
+.field-list li {
+	font-size: 0.813em;
+	line-height: 1.4;
+}
+
+.selected-field {
+	font-weight: 700;
+	text-decoration: underline;
+	color: #188754;	
+}
+
+.role-models {
+	clear: none;
+	height: auto;
+	overflow: hidden;	
+	margin: 20px 0px;
+}
+
+.role-models:last-of-type {
+	margin-bottom: 0px;
+}
+
+.role-model-photos {
+	width: 218px;
+	float: left;
+	margin-right: 6px;
+}
+
+.role-model-photos img {
+	margin-bottom: 25px;
+}
+
+.role-models h3 {
+	margin: 0px;
+}
+
+.role-models h4 {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+.role-model-bio {
+	width: 664px;
+	float: left;
+	margin-bottom: 18px;
+	-moz-column-count: 3;
+    -moz-column-gap: 6px;
+    -webkit-column-count: 3;
+    -webkit-column-gap : 6px;
+}
+
+.role-model-bio p {
+	-webkit-hyphens: auto;
+  	-moz-hyphens: auto;
+  	-ms-hyphens: auto;
+  	hyphens: auto;
+}
+
+.role-model-bio p:first-of-type {
+	margin-top: 0px;
+}
+
+/*<--Role Models page style ends here -->*/
