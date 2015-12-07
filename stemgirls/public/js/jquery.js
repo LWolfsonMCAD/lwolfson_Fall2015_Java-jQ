@@ -14,7 +14,7 @@ $( document ).ready(function() {
 
 
 //Override default styles
-	$('head').append('<link href="css/jquery.css" rel="stylesheet" type="text/css" />');
+	//$('head').append('<link href="css/jquery.css" rel="stylesheet" type="text/css" />');
 
 	$("section#roleModelFields div").removeClass("noJS");
 
