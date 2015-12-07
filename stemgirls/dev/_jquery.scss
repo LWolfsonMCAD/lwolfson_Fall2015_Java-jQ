@@ -21,6 +21,11 @@ div.inactiveBio {
 	background-color: #992D5A;
 }
 
+section#roleModelBiographies {
+	min-height: 300px;
+	margin-top: 10px;
+}
+
 section#roleModelBiographies div .current {
 	display: block;
 }
@@ -34,4 +39,8 @@ button.closeBio {
 	font-weight: 200;
 	color: #fff;
 	background-color: #825084;
+}
+
+div.placeholder {
+	width: 100%;
 }
