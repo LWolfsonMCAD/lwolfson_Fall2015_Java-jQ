@@ -9,12 +9,20 @@ Green: #188754;
 /************************************
 jQuery styles
 ************************************/
-.jQueryHover {
+div.inactiveBio {
+	display: none;
+}
+
+.jQueryHover, .active {
 	padding: 3px 1px;
 	font-weight: 200;
 	text-decoration: none;
 	color: #fff;
 	background-color: #992D5A;
+}
+
+section#roleModelBiographies div .current {
+	display: block;
 }
 
 button.closeBio {
