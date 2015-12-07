@@ -109,10 +109,6 @@ $( document ).ready(function() {
 
 	// $("section#roleModelBiographies").css("min-height", "300px");
 
-
-
-
-
 //Display the H3 elements that correspond with the field chosen.
 	$( fieldListChoices ).find("a").click(function() {
 		bioDivID = $(this).attr("href"),
