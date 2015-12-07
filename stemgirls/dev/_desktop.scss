@@ -137,6 +137,10 @@ div.container {
 			top: -55px;
 		}
 
+		p.disclaimer {
+			font-style: italic;
+		}
+
 
 /*References section on all pages*/
 		section.references {
@@ -310,6 +314,28 @@ section#roleModelBiographies {
 				p:first-of-type {
 					margin-top: 0px;
 				}
+		}
+
+		div.references {
+			clear: both;
+			width: 590px;
+			margin: 30px auto;
+			border-top: 0.5px solid #91989d;
+
+				h6 {
+					margin: 10px 0px 4px;
+				}
+
+				ol {
+					margin: 0px;
+					padding-left: 13px;
+
+						li {
+							font-size: 0.750em;
+							font-style: oblique;
+						}
+				}
+
 		}
 
 }
