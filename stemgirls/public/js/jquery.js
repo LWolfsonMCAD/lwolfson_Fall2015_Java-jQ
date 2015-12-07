@@ -14,6 +14,7 @@ $( document ).ready(function() {
 
 
 //Override default styles
+	$('head').append('<link href="css/jquery.css" rel="stylesheet" type="text/css" />');
 
 	$("section#roleModelFields div").removeClass("noJS");
 
@@ -38,7 +39,12 @@ $( document ).ready(function() {
 			idName = $(this).data("divid"),
 			currentBioDiv = $("div#" + idName),
 			previousBioDiv = $("#roleModelBiographies div.current"),
-			roleModelNames = $(currentBioDiv).find("article h3");	
+			roleModelNames = $(currentBioDiv).find("article h3"),
+			previousActiveField = $(fieldListChoices).find("a.activeField");
+
+		$(previousActiveField).toggleClass("activeField");
+
+		$(this).toggleClass("activeField");
 
 		$(previousBioDiv)
 				.toggleClass("current")
