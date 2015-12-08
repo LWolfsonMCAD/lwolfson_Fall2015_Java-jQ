@@ -28,10 +28,7 @@ $( document ).ready(function() {
 	$( bioSection ).find("div.bioDiv").addClass("inactiveBio");
 
 
-	$( roleModelBios )
-		// .add( references )
-		// .add( roleModelBios )
-		.hide();
+	$( roleModelBios ).hide();
 
 	$( roleModelInfoDiv ).after("<button class='closeBio'>Close Biography</button>");
 
@@ -65,14 +62,10 @@ $( document ).ready(function() {
 			$(this)
 				.next("div.roleModelBio")
 				.fadeIn(1000);
-
-			$( references ).fadeIn(1000);
 		});
 
 		$("button.closeBio").click(function() {
 			$(this).closest("div.roleModelBio").hide();
-
-			$( references ).hide();
 
 			$( roleModelNames ).show();
 		});
