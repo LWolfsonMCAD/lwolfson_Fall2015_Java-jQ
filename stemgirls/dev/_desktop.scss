@@ -296,9 +296,11 @@ section#roleModelBiographies {
 		}
 
 		div.roleModelInfo {
-			float: left;
-			width: 660px;
-			margin-bottom: 30px;
+			width: 74%;
+			margin: 20px auto;
+			//float: left;
+			//width: 660px;
+			//margin-bottom: 30px;
 			-moz-column-count: 3;
 		    -moz-column-gap: 6px;
 		    -webkit-column-count: 3;
@@ -333,6 +335,11 @@ section#roleModelBiographies {
 						li {
 							font-size: 0.750em;
 							font-style: oblique;
+						}
+
+						a {
+							text-decoration: underline;
+							color: blue;
 						}
 				}
 

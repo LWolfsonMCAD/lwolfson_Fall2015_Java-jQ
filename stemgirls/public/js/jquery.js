@@ -5,6 +5,7 @@ $( document ).ready(function() {
 		roleModelBios = $("div.roleModelBio"),
 		fieldListChoices = $("div.fieldList"),
 		bioSection = $("section#roleModelBiographies"),
+		roleModelInfoDiv = $("div.roleModelInfo"),
 		roleModelNames,
 		bioDivID,
 		bioDiv,
@@ -28,9 +29,11 @@ $( document ).ready(function() {
 
 
 	$( roleModelBios )
-		.append("<button class='closeBio'>Close Biography</button>")
-		.add( references )
+		// .add( references )
+		// .add( roleModelBios )
 		.hide();
+
+	$( roleModelInfoDiv ).after("<button class='closeBio'>Close Biography</button>");
 
 
 //Display the H3 elements that correspond with the field chosen.
@@ -63,7 +66,7 @@ $( document ).ready(function() {
 				.next("div.roleModelBio")
 				.fadeIn(1000);
 
-			$( references ).show();
+			$( references ).fadeIn(1000);
 		});
 
 		$("button.closeBio").click(function() {
