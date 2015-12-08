@@ -225,13 +225,14 @@ Role Models page
 section#roleModelFields {
 	height: 100%;
 	overflow: hidden;
-	border-bottom: 0.5px solid #91989d;	
+	border-bottom: 1px dotted #91989d;	
 
 		
 		div.fieldList {
 			width: 217.5px;
 			float: left;
 			margin-left: 6px;
+			margin-bottom: 30px;
 			font-size: 0.813em;
 			line-height: 1.4;
 
@@ -281,26 +282,31 @@ section#roleModelFields {
 
 section#roleModelBiographies {
 	height: auto;
+	margin-top: 30px;
 
 		h3 {
 			text-decoration: underline;
 		}
 
+		div.placeholder {
+			display: none;
+		}
+
 		div.roleModelPhotos {
 			float: left;
-			width: 220px;
+			width: 25%;
+			max-width: 220px;
 
 				img {
+					max-width: 210px;
 					margin-bottom: 25px;
 				}
 		}
 
 		div.roleModelInfo {
 			width: 74%;
+			max-width: 660px;
 			margin: 20px auto;
-			//float: left;
-			//width: 660px;
-			//margin-bottom: 30px;
 			-moz-column-count: 3;
 		    -moz-column-gap: 6px;
 		    -webkit-column-count: 3;
@@ -346,11 +352,4 @@ section#roleModelBiographies {
 		}
 
 }
-
-
-/*<--Role Models page style ends here -->*/
-
-
-
-
 

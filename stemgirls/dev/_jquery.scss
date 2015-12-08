@@ -23,10 +23,9 @@ div.inactiveBio {
 
 section#roleModelBiographies {
 	min-height: 300px;
-	margin-top: 10px;
 }
 
-section#roleModelBiographies div .current {
+section#roleModelBiographies div.current {
 	display: block;
 }
 
@@ -43,4 +42,15 @@ button.closeBio {
 
 div.placeholder {
 	width: 100%;
+	margin-top: 30px;
+
+		h2 {
+			text-align: center;
+		}
+
+		img {
+			display: block;
+			width: 75%;
+			margin: 30px auto 50px;
+		}
 }

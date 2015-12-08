@@ -1,7 +1,5 @@
 $( document ).ready(function() {
 	var
-		roleModels = $("article.roleModel"),
-		references = $("div.references"),
 		roleModelBios = $("div.roleModelBio"),
 		fieldListChoices = $("div.fieldList"),
 		bioSection = $("section#roleModelBiographies"),
@@ -23,10 +21,11 @@ $( document ).ready(function() {
 		$(this).toggleClass("jQueryHover");
 	});
 
-	//$( bioSection ).height("100%");
+	$( bioSection )
+			.find("div.bioDiv")
+			.addClass("inactiveBio");
 
-	$( bioSection ).find("div.bioDiv").addClass("inactiveBio");
-
+	$("section#roleModelBiographies div.placeholder").addClass("current");	
 
 	$( roleModelBios ).hide();
 
@@ -35,22 +34,21 @@ $( document ).ready(function() {
 
 //Display the H3 elements that correspond with the field chosen.
 	$( fieldListChoices ).on('click', 'a', function() {
-		var 
 			idName = $(this).data("divid"),
 			currentBioDiv = $("div#" + idName),
 			previousBioDiv = $("#roleModelBiographies div.current"),
-			roleModelNames = $(currentBioDiv).find("article h3"),
-			previousActiveField = $(fieldListChoices).find("a.activeField");
+			roleModelNames = $( currentBioDiv ).find("article h3"),
+			previousActiveField = $( fieldListChoices ).find("a.activeField");
 
 		$(previousActiveField).toggleClass("activeField");
 
 		$(this).toggleClass("activeField");
 
-		$(previousBioDiv)
+		$( previousBioDiv )
 				.toggleClass("current")
 				.toggleClass("inactiveBio");
 
-		$(currentBioDiv)
+		$( currentBioDiv )
 				.toggleClass("inactiveBio")
 				.toggleClass("current");
 
