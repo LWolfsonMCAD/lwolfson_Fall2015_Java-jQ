@@ -9,11 +9,20 @@ Green: #188754;
 /************************************
 jQuery styles
 ************************************/
+.main-navigation li.dropdownHover {
+	background-color: #188754;
+}
+
+.main-navigation li.subNavHover {
+	background-color: #992D5A;
+}
+
 div.inactiveBio {
 	display: none;
 }
 
 .jQueryHover, .activeField {
+	width: 100%;
 	padding: 3px 1px;
 	font-weight: 200;
 	text-decoration: none;
@@ -29,16 +38,28 @@ section#roleModelBiographies div.current {
 	display: block;
 }
 
-button.closeBio {
-	display: block;
-	margin-left: 45%;
-	padding: 10px;
-	border: 1px solid #828084;
-	border-radius: 10px;
-	font-weight: 200;
-	color: #fff;
-	background-color: #825084;
+div.roleModelBio {
+	position: relative;
+
+	img.closebox {
+		position: absolute;
+		top: -45px;
+		right: 17px;
+	}
+
+	button.closeBio {
+		display: block;
+		margin-left: 45%;
+		padding: 10px;
+		border: 1px solid #828084;
+		border-radius: 10px;
+		font-weight: 200;
+		color: #fff;
+		background-color: #825084;
+	}
 }
+
+
 
 div.placeholder {
 	width: 100%;

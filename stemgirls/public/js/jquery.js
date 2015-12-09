@@ -1,5 +1,7 @@
 $( document ).ready(function() {
 	var
+		mainNavDropDown = $("ul.main-navigation li.dropdown"),
+		subNavigation = $("header .sub-navigation a"),
 		roleModelBios = $("div.roleModelBio"),
 		fieldListChoices = $("div.fieldList"),
 		bioSection = $("section#roleModelBiographies"),
@@ -13,9 +15,9 @@ $( document ).ready(function() {
 
 
 //Override default styles
-	//$('head').append('<link href="css/jquery.css" rel="stylesheet" type="text/css" />');
+	$( roleModelBios ).hide();
 
-	$("section#roleModelFields div").removeClass("noJS");
+	$("section#roleModelFields div").add("ul.main-navigation li.dropdown").removeClass("noJS");
 
 	$("div.fieldList a").hover(function() {
 		$(this).toggleClass("jQueryHover");
@@ -27,9 +29,19 @@ $( document ).ready(function() {
 
 	$("section#roleModelBiographies div.placeholder").addClass("current");	
 
-	$( roleModelBios ).hide();
+	$( roleModelInfoDiv ).prepend("<img src='images/closebox_small.png' alt='Close box icon' class='closebox'>").after("<button class='closeBio'>Close Biography</button>");
 
-	$( roleModelInfoDiv ).after("<button class='closeBio'>Close Biography</button>");
+
+//Main navigation actions.
+	$( mainNavDropDown ).on('mouseenter mouseleave', function() {
+		$(this)
+			.find("ul")
+			.slideToggle(600);
+	});
+
+	$( subNavigation ).hover(function() {
+		$(this).closest("li").toggleClass("subNavHover");
+	});
 
 
 //Display the H3 elements that correspond with the field chosen.
@@ -40,33 +52,34 @@ $( document ).ready(function() {
 			roleModelNames = $( currentBioDiv ).find("article h3"),
 			previousActiveField = $( fieldListChoices ).find("a.activeField");
 
-		$(previousActiveField).toggleClass("activeField");
 
-		$(this).toggleClass("activeField");
+			$(previousActiveField).toggleClass("activeField");
 
-		$( previousBioDiv )
-				.toggleClass("current")
-				.toggleClass("inactiveBio");
+			$(this).toggleClass("activeField");
 
-		$( currentBioDiv )
-				.toggleClass("inactiveBio")
-				.toggleClass("current");
+			$( previousBioDiv )
+					.toggleClass("current")
+					.toggleClass("inactiveBio");
+
+			$( currentBioDiv )
+					.toggleClass("inactiveBio")
+					.toggleClass("current");
 
 
-	//Show the chosen woman's bio
-		$( roleModelNames ).click(function() {
-			$( roleModelNames ).not( $(this) ).hide();
+		//Show the chosen woman's bio
+			$( roleModelNames ).click(function() {
+				$( roleModelNames ).not( $(this) ).hide();
 
-			$(this)
-				.next("div.roleModelBio")
-				.fadeIn(1000);
-		});
+				$(this)
+					.next("div.roleModelBio")
+					.fadeIn(1000);
+			});
 
-		$("button.closeBio").click(function() {
-			$(this).closest("div.roleModelBio").hide();
+			$("button.closeBio").add("img.closebox").click(function() {
+				$(this).closest("div.roleModelBio").hide();
 
-			$( roleModelNames ).show();
-		});
+				$( roleModelNames ).show();
+			});
 
 	});
 
