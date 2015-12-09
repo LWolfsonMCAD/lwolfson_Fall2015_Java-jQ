@@ -15,6 +15,8 @@ $( document ).ready(function() {
 
 
 //Override default styles
+	$("span#noJSBackToTop").hide();
+
 	$( roleModelBios ).hide();
 
 	$("section#roleModelFields div").add("ul.main-navigation li.dropdown").removeClass("noJS");
