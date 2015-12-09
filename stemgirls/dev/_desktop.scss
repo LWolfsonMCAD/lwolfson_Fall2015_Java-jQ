@@ -47,7 +47,7 @@ a:hover, img.closebox:hover {
 span#noJSBackToTop {
 	position: fixed;
 	top: 0;
-	width: 76%;
+	width: 100%;
 	max-width: 960px;
 	padding: 5px 0px;
 	text-align: center;
@@ -137,6 +137,14 @@ header {
 		}
 }
 
+img.intro-pic {
+			width: 328px;
+			position: absolute;
+			top: 138px;
+			right: 0px;
+			z-index: 20;
+		}
+
 div.container {
 	position: relative;
 	margin: 0px 36px;
@@ -160,14 +168,6 @@ div.container {
 			margin-top: 5px;
 			font-size: 1.125em;
 			line-height: 1.7;
-		}
-
-		.intro img {
-			width: 328px;
-			position: absolute;
-			top: -55px;
-			margin-left: 21px;
-			z-index: 20;
 		}
 
 		p.disclaimer {
@@ -225,7 +225,6 @@ footer {
 /************************************
 SciGirls Seven page
 ************************************/
-
 #sciseven-list {
 	height: 530px;
 	margin-bottom: 25px;
