@@ -254,14 +254,17 @@ SciGirls Seven page
 Role Models page
 ************************************/
 section#roleModelFields {
+	position: relative;
+	width: 100%;
 	height: 100%;
+	padding-left: 25px;
 	overflow: hidden;
 	border-bottom: 1px dotted #91989d;	
 
 		
 		div.fieldList {
-			width: 217.5px;
 			float: left;
+			width: 24%;
 			margin-left: 6px;
 			margin-bottom: 30px;
 			font-size: 0.813em;
@@ -277,6 +280,17 @@ section#roleModelFields {
 					list-style: none;
 					padding-left: 0px;
 					margin-top: 0px;
+				}
+
+				li {
+					width: 100%;
+					margin-left: -3px;
+					padding-left: 3px;
+					line-height: 1.8em;
+
+						a {
+							display: block;
+						}
 				}
 
 		}
@@ -314,6 +328,10 @@ section#roleModelFields {
 section#roleModelBiographies {
 	height: auto;
 	margin-top: 30px;
+
+		h2 {
+			color: #284f63;
+		}
 
 		h3 {
 			text-decoration: underline;

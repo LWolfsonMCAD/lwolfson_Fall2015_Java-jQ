@@ -21,7 +21,7 @@ $( document ).ready(function() {
 
 	$("section#roleModelFields div").add("ul.main-navigation li.dropdown").removeClass("noJS");
 
-	$("div.fieldList a").hover(function() {
+	$("div.fieldList li").hover(function() {
 		$(this).toggleClass("jQueryHover");
 	});
 
@@ -31,14 +31,16 @@ $( document ).ready(function() {
 
 	$("section#roleModelBiographies div.placeholder").addClass("current");	
 
-	$( roleModelInfoDiv ).prepend("<img src='images/closebox_small.png' alt='Close box icon' class='closebox'>").after("<button class='closeBio'>Close Biography</button>");
+	$( roleModelInfoDiv ).after("<button class='closeBio'>Close Biography</button>");
+
+
 
 
 //Main navigation actions.
 	$( mainNavDropDown ).on('mouseenter mouseleave', function() {
 		$(this)
 			.find("ul")
-			.slideToggle(600);
+			.slideToggle();
 	});
 
 	$( subNavigation ).hover(function() {
@@ -52,12 +54,12 @@ $( document ).ready(function() {
 			currentBioDiv = $("div#" + idName),
 			previousBioDiv = $("#roleModelBiographies div.current"),
 			roleModelNames = $( currentBioDiv ).find("article h3"),
-			previousActiveField = $( fieldListChoices ).find("a.activeField");
+			previousActiveField = $( fieldListChoices ).find("li.activeField");
 
 
 			$(previousActiveField).toggleClass("activeField");
 
-			$(this).toggleClass("activeField");
+			$(this).closest("li").toggleClass("activeField");
 
 			$( previousBioDiv )
 					.toggleClass("current")
@@ -75,10 +77,14 @@ $( document ).ready(function() {
 				$(this)
 					.next("div.roleModelBio")
 					.fadeIn(1000);
+
+				$(this).closest("div.bioDiv").find("h2").hide();
 			});
 
-			$("button.closeBio").add("img.closebox").click(function() {
+			$("button.closeBio").click(function() {
 				$(this).closest("div.roleModelBio").hide();
+
+				$(this).closest("div.bioDiv").find("h2").show();
 
 				$( roleModelNames ).show();
 			});

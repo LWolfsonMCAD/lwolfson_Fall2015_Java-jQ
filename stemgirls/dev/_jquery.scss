@@ -22,21 +22,32 @@ div.inactiveBio {
 }
 
 .jQueryHover, .activeField {
-	width: 100%;
-	padding: 3px 1px;
+	background-color: #992D5A;
+}
+
+.jQueryHover a, .activeField a {
 	font-weight: 200;
 	text-decoration: none;
 	color: #fff;
-	background-color: #992D5A;
 }
 
 section#roleModelBiographies {
 	min-height: 300px;
+
+		div.roleModelInfo.bioNoImages {
+				width: 80%;
+				max-width: 660px;
+				margin: 20px auto;
+				-moz-column-count: 1;
+			    -webkit-column-count: 1;
+
+		}
 }
 
 section#roleModelBiographies div.current {
 	display: block;
 }
+
 
 div.roleModelBio {
 	position: relative;
@@ -58,8 +69,6 @@ div.roleModelBio {
 		background-color: #825084;
 	}
 }
-
-
 
 div.placeholder {
 	width: 100%;
