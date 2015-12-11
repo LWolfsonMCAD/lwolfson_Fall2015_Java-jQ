@@ -29,6 +29,8 @@ $( document ).ready(function() {
 			.find("div.bioDiv")
 			.addClass("inactiveBio");
 
+	$("div.noJSPadding").removeClass("noJSPadding");
+
 	$("section#roleModelBiographies div.placeholder").addClass("current");	
 
 	$( roleModelInfoDiv ).after("<button class='closeBio'>Close Biography</button>");
@@ -72,13 +74,16 @@ $( document ).ready(function() {
 
 		//Show the chosen woman's bio
 			$( roleModelNames ).click(function() {
-				$( roleModelNames ).not( $(this) ).hide();
+				if(!$(this).hasClass("noBioInfo")) {
 
-				$(this)
-					.next("div.roleModelBio")
-					.fadeIn(1000);
+					$( roleModelNames ).not( $(this) ).hide();
 
-				$(this).closest("div.bioDiv").find("h2").hide();
+					$(this)
+						.next("div.roleModelBio")
+						.fadeIn(1000);
+
+					$(this).closest("div.bioDiv").find("h2").hide();
+				}
 			});
 
 			$("button.closeBio").click(function() {

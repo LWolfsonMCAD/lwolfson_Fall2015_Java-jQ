@@ -34,6 +34,10 @@ div.inactiveBio {
 section#roleModelBiographies {
 	min-height: 300px;
 
+		h3.noBioInfo {
+			text-decoration: none;
+		}
+
 		div.roleModelInfo.bioNoImages {
 				width: 80%;
 				max-width: 660px;

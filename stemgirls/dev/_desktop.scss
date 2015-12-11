@@ -329,6 +329,15 @@ section#roleModelBiographies {
 	height: auto;
 	margin-top: 30px;
 
+		div.noJSPadding {
+			padding-top: 50px;
+
+			h3 {
+				text-decoration: none;
+				margin-bottom: 100px;
+			}
+		}
+
 		h2 {
 			color: #284f63;
 		}
