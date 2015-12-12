@@ -145,7 +145,8 @@ img.intro-pic {
 
 div.container {
 	position: relative;
-	margin: 0px 36px;
+	width: 100%;
+	padding: 0px 36px;
 	z-index: 0;
 
 		h1 {
@@ -326,6 +327,7 @@ section#roleModelFields {
 
 
 section#roleModelBiographies {
+	width: 100%;
 	height: auto;
 	margin-top: 30px;
 
@@ -354,16 +356,16 @@ section#roleModelBiographies {
 			float: left;
 			width: 25%;
 			max-width: 220px;
+			margin-right: 20px;
 
 				img {
-					max-width: 210px;
-					margin-bottom: 25px;
+					display: block;
+					margin: 0px auto 25px;
 				}
 		}
 
 		div.roleModelInfo {
-			width: 74%;
-			max-width: 660px;
+			width: 70%;
 			margin: 20px auto;
 			-moz-column-count: 3;
 		    -moz-column-gap: 6px;

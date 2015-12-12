@@ -39,12 +39,18 @@ section#roleModelBiographies {
 		}
 
 		div.roleModelInfo.bioNoImages {
-				width: 80%;
-				max-width: 660px;
-				margin: 20px auto;
-				-moz-column-count: 1;
-			    -webkit-column-count: 1;
+			width: 60%;
+			margin: 20px auto;
+			-moz-column-count: 1;
+		    -webkit-column-count: 1;
+		}
 
+		div.roleModelInfo.longBio {
+			float: left;
+			width: 60%;
+			margin: 0px auto 20px;
+			-moz-column-count: 1;
+		    -webkit-column-count: 1;
 		}
 }
 
@@ -56,13 +62,14 @@ section#roleModelBiographies div.current {
 div.roleModelBio {
 	position: relative;
 
-	img.closebox {
-		position: absolute;
-		top: -45px;
-		right: 17px;
-	}
+	// img.closebox {
+	// 	position: absolute;
+	// 	top: -45px;
+	// 	right: 17px;
+	// }
 
 	button.closeBio {
+		clear: left;
 		display: block;
 		margin-left: 45%;
 		padding: 10px;
